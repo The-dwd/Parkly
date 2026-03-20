@@ -16,14 +16,13 @@
   --text:#18213A;--text2:#5A678A;--text3:#9BA8C4;
   --teal:#00C2C7;--teal-d:#009FA3;--teal-l:rgba(0,194,199,.12);
   --coral:#FF5E5B;--coral-l:rgba(255,94,91,.12);
-  --yellow:#FFD600;--yellow-l:rgba(255,214,0,.15);
-  --purple:#7B61FF;--purple-l:rgba(123,97,255,.12);
+  --yellow:#FFD600;--purple:#7B61FF;--purple-l:rgba(123,97,255,.12);
   --green:#00C48C;--green-l:rgba(0,196,140,.12);
   --orange:#FF8C00;--orange-l:rgba(255,140,0,.12);
   --shadow-sm:0 2px 8px rgba(0,40,120,.07);
   --shadow:0 4px 20px rgba(0,40,120,.10);
   --shadow-lg:0 8px 40px rgba(0,40,120,.14);
-  --r:16px;--r-sm:10px;--r-xs:6px;
+  --r:16px;--r-sm:10px;
   --fd:'Nunito',sans-serif;--fb:'Nunito Sans',sans-serif;
 }
 [data-theme="dark"]{
@@ -37,323 +36,367 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
 .screen.active{display:flex}
 
 /* LOADER */
-.loader-overlay{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .3s}
+.loader-overlay{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .4s}
 .loader-overlay.hidden{opacity:0;pointer-events:none}
 .loader-logo{font-family:var(--fd);font-size:32px;font-weight:900;display:flex;align-items:center;gap:10px}
-.loader-logo .logo-badge{width:44px;height:44px;border-radius:14px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 16px rgba(0,194,199,.4)}
-.loader-logo span{color:var(--teal)}
+.logo-badge{width:38px;height:38px;border-radius:12px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(0,194,199,.4);flex-shrink:0}
 .loader-spin{width:36px;height:36px;border:3px solid var(--border2);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* THEME TOGGLE */
-.theme-toggle{width:44px;height:44px;border-radius:50%;background:var(--surface);border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:all .2s;box-shadow:var(--shadow-sm);flex-shrink:0}
+.theme-toggle{width:42px;height:42px;border-radius:50%;background:var(--surface);border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;transition:all .2s;box-shadow:var(--shadow-sm);flex-shrink:0}
 .theme-toggle:hover{transform:rotate(20deg) scale(1.08)}
 
 /* BUTTONS */
 .btn{font-family:var(--fd);font-weight:700;font-size:14px;padding:12px 24px;border-radius:999px;border:none;cursor:pointer;transition:all .22s;display:inline-flex;align-items:center;gap:8px}
 .btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 16px rgba(0,194,199,.35)}
 .btn-teal:hover{background:var(--teal-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,194,199,.4)}
-.btn-coral{background:var(--coral);color:#fff;box-shadow:0 4px 16px rgba(255,94,91,.35)}
-.btn-coral:hover{transform:translateY(-2px)}
 .btn-ghost{background:var(--surface);color:var(--text2);border:2px solid var(--border)}
 .btn-ghost:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-l)}
-.btn-outline-teal{background:transparent;color:var(--teal);border:2px solid var(--teal)}
-.btn-outline-teal:hover{background:var(--teal-l)}
+.btn-coral{background:var(--coral);color:#fff}
+.btn-coral:hover{opacity:.88;transform:translateY(-1px)}
 .btn-lg{padding:15px 34px;font-size:16px}
 .btn-sm{padding:8px 16px;font-size:12px}
 .w100{width:100%;justify-content:center}
 
-/* ── LANDING ── */
-#screen-landing{background:var(--bg);overflow:hidden}
-.l-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:var(--surface);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:50}
-.logo{font-family:var(--fd);font-size:26px;font-weight:900;color:var(--text);display:flex;align-items:center;gap:10px;letter-spacing:-.5px}
-.logo-badge{width:38px;height:38px;border-radius:12px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(0,194,199,.4)}
+/* LOGO */
+.logo{font-family:var(--fd);font-size:24px;font-weight:900;color:var(--text);display:flex;align-items:center;gap:10px;letter-spacing:-.5px}
 .logo span{color:var(--teal)}
+.logo .logo-badge{width:36px;height:36px;border-radius:11px;font-size:18px}
+
+/* ══ LANDING ══ */
+#screen-landing{background:var(--bg);overflow:hidden}
+.l-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:var(--surface);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:50}
 .l-nav-links{display:flex;align-items:center;gap:8px}
-.l-hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 77px);overflow:hidden}
-.l-hero-left{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
-.l-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--teal-l);border:2px solid rgba(0,194,199,.25);border-radius:999px;padding:6px 16px 6px 10px;font-family:var(--fd);font-size:12px;font-weight:800;color:var(--teal);margin-bottom:24px;width:fit-content;animation:fu .5s ease both}
-.eyebrow-dot{width:24px;height:24px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:12px}
-.l-h1{font-family:var(--fd);font-size:clamp(40px,5.5vw,68px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:20px;animation:fu .5s .08s ease both}
+.l-hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 73px);overflow:hidden}
+.l-hero-left{padding:64px 56px;display:flex;flex-direction:column;justify-content:center}
+.l-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--teal-l);border:2px solid rgba(0,194,199,.25);border-radius:999px;padding:6px 16px 6px 10px;font-family:var(--fd);font-size:12px;font-weight:800;color:var(--teal);margin-bottom:22px;width:fit-content;animation:fu .5s ease both}
+.eyebrow-dot{width:22px;height:22px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:11px}
+.l-h1{font-family:var(--fd);font-size:clamp(38px,5vw,64px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:18px;animation:fu .5s .08s ease both}
 .l-h1 .accent{color:var(--teal)}
-.l-sub{font-size:17px;color:var(--text2);line-height:1.7;max-width:460px;margin-bottom:36px;font-weight:400;animation:fu .5s .16s ease both}
-.l-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;animation:fu .5s .24s ease both}
-.l-stats{display:flex;gap:0;animation:fu .5s .32s ease both;border-top:2px solid var(--border);padding-top:36px}
+.l-sub{font-size:16px;color:var(--text2);line-height:1.7;max-width:440px;margin-bottom:32px;animation:fu .5s .16s ease both}
+.l-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;animation:fu .5s .24s ease both}
+.l-stats{display:flex;gap:0;animation:fu .5s .32s ease both;border-top:2px solid var(--border);padding-top:32px}
 .l-stat{flex:1}
-.l-stat+.l-stat{padding-left:24px;border-left:2px solid var(--border);margin-left:24px}
-.l-stat-n{font-family:var(--fd);font-size:36px;font-weight:900;color:var(--teal);line-height:1}
+.l-stat+.l-stat{padding-left:20px;border-left:2px solid var(--border);margin-left:20px}
+.l-stat-n{font-family:var(--fd);font-size:32px;font-weight:900;color:var(--teal);line-height:1}
 .l-stat-l{font-size:12px;color:var(--text2);font-weight:600;margin-top:4px}
 .l-hero-right{position:relative;overflow:hidden;background:var(--bg2);border-left:2px solid var(--border)}
 #landing-map{width:100%;height:100%}
-.l-map-card{position:absolute;bottom:32px;right:24px;z-index:20;background:var(--surface);border-radius:var(--r);border:2px solid var(--border);padding:18px 22px;box-shadow:var(--shadow-lg);min-width:210px;animation:fu .5s .4s ease both}
-.lmc-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
-.lmc-name{font-family:var(--fd);font-size:16px;font-weight:800;color:var(--text)}
+.l-map-card{position:absolute;bottom:28px;right:20px;z-index:20;background:var(--surface);border-radius:var(--r);border:2px solid var(--border);padding:16px 20px;box-shadow:var(--shadow-lg);min-width:200px;animation:fu .5s .4s ease both}
+.lmc-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:7px}
+.lmc-name{font-family:var(--fd);font-size:15px;font-weight:800;color:var(--text)}
 .lmc-detail{font-size:12px;color:var(--text2);margin-top:3px}
-.lmc-price{font-family:var(--fd);font-size:26px;font-weight:900;color:var(--teal);margin-top:10px;line-height:1}
-.lmc-price span{font-size:13px;color:var(--text3);font-family:var(--fb);font-weight:400}
-.l-section{padding:88px 56px;background:var(--surface);border-top:2px solid var(--border)}
+.lmc-status{font-family:var(--fd);font-size:13px;font-weight:800;color:var(--green);margin-top:10px}
+
+/* Sections */
+.l-section{padding:80px 56px;background:var(--surface);border-top:2px solid var(--border)}
 .l-section-alt{background:var(--bg)}
-.section-eyebrow{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.section-eyebrow::before{content:'';width:28px;height:3px;background:var(--teal);border-radius:2px}
-.section-title{font-family:var(--fd);font-size:clamp(30px,4vw,48px);font-weight:900;color:var(--text);line-height:1.1;letter-spacing:-1px;margin-bottom:56px}
+.section-eyebrow{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.section-eyebrow::before{content:'';width:24px;height:3px;background:var(--teal);border-radius:2px}
+.section-title{font-family:var(--fd);font-size:clamp(28px,3.5vw,44px);font-weight:900;color:var(--text);line-height:1.1;letter-spacing:-1px;margin-bottom:48px}
 .section-title .accent{color:var(--teal)}
-.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.how-card{background:var(--surface2);border:2px solid var(--border);border-radius:var(--r);padding:32px 28px;transition:all .22s;position:relative;overflow:hidden}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.how-card{background:var(--surface2);border:2px solid var(--border);border-radius:var(--r);padding:28px 24px;transition:all .22s;position:relative;overflow:hidden}
 .how-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--teal);opacity:0;transition:opacity .2s}
 .how-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--teal)}
 .how-card:hover::before{opacity:1}
-.how-num{font-family:var(--fd);font-size:52px;font-weight:900;line-height:1;margin-bottom:16px;-webkit-text-stroke:2px var(--teal);color:transparent}
-.how-title{font-family:var(--fd);font-size:18px;font-weight:800;color:var(--text);margin-bottom:10px}
+.how-num{font-family:var(--fd);font-size:48px;font-weight:900;line-height:1;margin-bottom:14px;-webkit-text-stroke:2px var(--teal);color:transparent}
+.how-title{font-family:var(--fd);font-size:17px;font-weight:800;color:var(--text);margin-bottom:8px}
 .how-desc{font-size:13px;color:var(--text2);line-height:1.7}
-.device-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.device-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:340px}
-.device-ring{width:260px;height:260px;border-radius:50%;border:2px dashed var(--border2);display:flex;align-items:center;justify-content:center;position:relative;animation:spin 25s linear infinite}
-.device-ring2{position:absolute;width:200px;height:200px;border-radius:50%;border:2px solid var(--border);animation:spin 15s linear infinite reverse}
-.device-core{width:130px;height:130px;border-radius:28px;background:linear-gradient(135deg,var(--teal),var(--purple));display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:0 12px 40px rgba(0,194,199,.4);position:absolute;z-index:5;animation:bob 3s ease-in-out infinite}
+
+/* Device */
+.device-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.device-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:320px}
+.device-ring{width:240px;height:240px;border-radius:50%;border:2px dashed var(--border2);display:flex;align-items:center;justify-content:center;position:relative;animation:spin 25s linear infinite}
+.device-ring2{position:absolute;width:185px;height:185px;border-radius:50%;border:2px solid var(--border);animation:spin 15s linear infinite reverse}
+.device-core{width:120px;height:120px;border-radius:26px;background:linear-gradient(135deg,var(--teal),var(--purple));display:flex;align-items:center;justify-content:center;font-size:48px;box-shadow:0 12px 40px rgba(0,194,199,.4);position:absolute;z-index:5;animation:bob 3s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .device-ping{position:absolute;border-radius:50%;background:var(--teal);animation:dpulse 2s ease infinite;z-index:6}
 @keyframes dpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
-.device-tag{position:absolute;z-index:10;background:var(--surface);border:2px solid var(--border);border-radius:999px;padding:6px 14px;font-size:11px;font-weight:800;color:var(--teal);box-shadow:var(--shadow-sm);white-space:nowrap;font-family:var(--fd)}
-.tech-list{display:flex;flex-direction:column;gap:18px}
-.tech-item{display:flex;align-items:flex-start;gap:16px}
-.tech-icon{width:44px;height:44px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px}
-.tech-title{font-family:var(--fd);font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px}
+.device-tag{position:absolute;z-index:10;background:var(--surface);border:2px solid var(--border);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;color:var(--teal);box-shadow:var(--shadow-sm);white-space:nowrap;font-family:var(--fd)}
+.tech-list{display:flex;flex-direction:column;gap:16px}
+.tech-item{display:flex;align-items:flex-start;gap:14px}
+.tech-icon{width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px}
+.tech-title{font-family:var(--fd);font-size:14px;font-weight:800;color:var(--text);margin-bottom:3px}
 .tech-desc{font-size:13px;color:var(--text2);line-height:1.6}
-.plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px}
-.plan-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:36px 32px;position:relative;transition:all .22s;overflow:hidden}
+
+/* Plans */
+.plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px}
+.plan-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:32px 28px;position:relative;transition:all .22s}
 .plan-card.featured{border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-l),var(--shadow)}
 .plan-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.plan-badge{position:absolute;top:20px;right:20px;background:var(--teal);color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:999px;font-family:var(--fd)}
-.plan-name{font-family:var(--fd);font-size:24px;font-weight:900;color:var(--text);margin-bottom:6px}
-.plan-price{font-family:var(--fd);font-size:48px;font-weight:900;color:var(--teal);line-height:1}
-.plan-price span{font-size:16px;font-family:var(--fb);color:var(--text2);font-weight:400}
-.plan-owner-box{background:var(--teal-l);border:2px solid rgba(0,194,199,.25);border-radius:var(--r-sm);padding:12px 14px;margin:16px 0;font-size:13px;color:var(--text2)}
+.plan-badge{position:absolute;top:18px;right:18px;background:var(--teal);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:999px;font-family:var(--fd)}
+.plan-name{font-family:var(--fd);font-size:22px;font-weight:900;margin-bottom:5px}
+.plan-price{font-family:var(--fd);font-size:44px;font-weight:900;color:var(--teal);line-height:1}
+.plan-price span{font-size:15px;font-family:var(--fb);color:var(--text2);font-weight:400}
+.plan-owner-box{background:var(--teal-l);border:2px solid rgba(0,194,199,.25);border-radius:var(--r-sm);padding:11px 13px;margin:14px 0;font-size:13px;color:var(--text2)}
 .plan-owner-box strong{color:var(--teal)}
-.plan-divider{height:2px;background:var(--border);margin:20px 0;border-radius:1px}
-.plan-features{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
-.pf{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2);line-height:1.5}
-.pf-check{color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px}
-.l-visual-strip{padding:56px;background:linear-gradient(135deg,#00C2C7 0%,#7B61FF 100%);display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
-.vs-item{text-align:center;color:#fff;max-width:200px}
-.vs-icon{width:64px;height:64px;border-radius:20px;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 14px;border:2px solid rgba(255,255,255,.2)}
-.vs-title{font-family:var(--fd);font-weight:800;font-size:16px;margin-bottom:6px}
-.vs-desc{font-size:13px;opacity:.75;line-height:1.5}
-.l-footer-cta{padding:88px 56px;text-align:center;background:var(--bg);border-top:2px solid var(--border)}
-.l-footer{padding:24px 56px;border-top:2px solid var(--border);background:var(--surface);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text3);font-weight:600}
+.plan-divider{height:2px;background:var(--border);margin:18px 0;border-radius:1px}
+.plan-features{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.pf{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text2);line-height:1.5}
+.pf-check{color:var(--green);font-size:15px;flex-shrink:0;margin-top:1px}
 
-/* ── AUTH ── */
+.l-visual-strip{padding:48px 56px;background:linear-gradient(135deg,#00C2C7 0%,#7B61FF 100%);display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+.vs-item{text-align:center;color:#fff;max-width:190px}
+.vs-icon{width:60px;height:60px;border-radius:18px;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 12px;border:2px solid rgba(255,255,255,.2)}
+.vs-title{font-family:var(--fd);font-weight:800;font-size:15px;margin-bottom:5px}
+.vs-desc{font-size:12px;opacity:.75;line-height:1.5}
+.l-footer-cta{padding:80px 56px;text-align:center;background:var(--bg);border-top:2px solid var(--border)}
+.l-footer{padding:22px 56px;border-top:2px solid var(--border);background:var(--surface);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text3);font-weight:600}
+
+/* ══ AUTH ══ */
 #screen-auth{background:var(--bg);min-height:100vh}
-.auth-topbar{padding:16px 40px;background:var(--surface);border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.auth-body{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
-.auth-wrap{display:flex;gap:56px;align-items:center;max-width:880px;width:100%}
-.auth-left{flex:1;max-width:360px}
-.al-title{font-family:var(--fd);font-size:38px;font-weight:900;line-height:1.1;margin-bottom:14px;letter-spacing:-.5px}
+.auth-topbar{padding:14px 36px;background:var(--surface);border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.auth-body{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.auth-wrap{display:flex;gap:48px;align-items:center;max-width:860px;width:100%}
+.auth-left{flex:1;max-width:340px}
+.al-title{font-family:var(--fd);font-size:34px;font-weight:900;line-height:1.1;margin-bottom:12px;letter-spacing:-.5px}
 .al-title .accent{color:var(--teal)}
-.al-sub{color:var(--text2);font-size:15px;line-height:1.65;margin-bottom:28px}
-.testi-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--shadow-sm)}
-.testi-q{font-size:14px;color:var(--text);line-height:1.65;font-style:italic;margin-bottom:14px}
+.al-sub{color:var(--text2);font-size:14px;line-height:1.65;margin-bottom:24px}
+.testi-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:18px;box-shadow:var(--shadow-sm)}
+.testi-q{font-size:13px;color:var(--text);line-height:1.65;font-style:italic;margin-bottom:12px}
 .testi-au{display:flex;align-items:center;gap:10px}
-.tav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--yellow),var(--orange));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:15px;color:#fff;flex-shrink:0}
-.tname{font-family:var(--fd);font-size:14px;font-weight:800}
+.tav{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--yellow),var(--orange));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:14px;color:#fff;flex-shrink:0}
+.tname{font-family:var(--fd);font-size:13px;font-weight:800}
 .tdtl{font-size:11px;color:var(--text3);font-weight:600;margin-top:1px}
-.stars{color:var(--yellow);font-size:13px}
-.auth-card{background:var(--surface);border:2px solid var(--border);border-radius:22px;padding:36px;width:100%;max-width:400px;box-shadow:var(--shadow-lg)}
-.ac-logo{font-family:var(--fd);font-size:22px;font-weight:900;margin-bottom:4px;display:flex;align-items:center;gap:8px}
-.ac-logo .logo-badge{width:28px;height:28px;border-radius:8px;font-size:14px}
+.stars{color:var(--yellow);font-size:12px}
+.auth-card{background:var(--surface);border:2px solid var(--border);border-radius:22px;padding:32px;width:100%;max-width:390px;box-shadow:var(--shadow-lg)}
+.ac-logo{font-family:var(--fd);font-size:21px;font-weight:900;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.ac-logo .logo-badge{width:27px;height:27px;border-radius:8px;font-size:14px}
 .ac-logo span{color:var(--teal)}
-.ac-sub{color:var(--text2);font-size:13px;margin-bottom:24px}
-.auth-tabs{display:flex;background:var(--bg2);border-radius:12px;padding:4px;margin-bottom:24px;gap:4px}
-.atab{flex:1;padding:9px;text-align:center;font-size:13px;font-weight:800;border-radius:9px;cursor:pointer;color:var(--text2);transition:all .2s;border:none;background:transparent;font-family:var(--fd)}
+.ac-sub{color:var(--text2);font-size:13px;margin-bottom:22px}
+.auth-tabs{display:flex;background:var(--bg2);border-radius:11px;padding:4px;margin-bottom:22px;gap:4px}
+.atab{flex:1;padding:8px;text-align:center;font-size:13px;font-weight:800;border-radius:8px;cursor:pointer;color:var(--text2);transition:all .2s;border:none;background:transparent;font-family:var(--fd)}
 .atab.active{background:var(--surface);color:var(--teal);box-shadow:var(--shadow-sm)}
-.fg{margin-bottom:16px}
-.fl{display:block;font-size:11px;font-weight:800;color:var(--text2);margin-bottom:7px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--fd)}
-.fi{width:100%;padding:12px 16px;background:var(--bg2);border:2px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--fb);font-size:14px;outline:none;transition:all .2s}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:11px;font-weight:800;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;font-family:var(--fd)}
+.fi{width:100%;padding:11px 14px;background:var(--bg2);border:2px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--fb);font-size:14px;outline:none;transition:all .2s}
 .fi:focus{border-color:var(--teal);background:var(--surface);box-shadow:0 0 0 4px var(--teal-l)}
 .fi::placeholder{color:var(--text3)}
-.fsel{width:100%;padding:12px 16px;background:var(--bg2);border:2px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--fb);font-size:14px;outline:none;cursor:pointer;transition:all .2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239BA8C4' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-color:var(--bg2)}
+.fsel{width:100%;padding:11px 14px;background:var(--bg2);border:2px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--fb);font-size:14px;outline:none;cursor:pointer;transition:all .2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239BA8C4' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-color:var(--bg2)}
 .fsel:focus{border-color:var(--teal)}
-.plan-cards{display:flex;gap:10px}
-.pc{flex:1;padding:14px;border-radius:var(--r-sm);border:2px solid var(--border);background:var(--bg2);cursor:pointer;transition:all .2s;position:relative}
+.plan-cards{display:flex;gap:8px}
+.pc{flex:1;padding:12px;border-radius:var(--r-sm);border:2px solid var(--border);background:var(--bg2);cursor:pointer;transition:all .2s;position:relative}
 .pc.sel{border-color:var(--teal);background:var(--teal-l)}
-.pc-n{font-family:var(--fd);font-weight:800;font-size:13px;margin-bottom:4px}
-.pc-p{font-family:var(--fd);font-size:22px;font-weight:900;color:var(--teal)}
+.pc-n{font-family:var(--fd);font-weight:800;font-size:12px;margin-bottom:3px}
+.pc-p{font-family:var(--fd);font-size:20px;font-weight:900;color:var(--teal)}
 .pc-p span{font-size:11px;color:var(--text2);font-weight:400;font-family:var(--fb)}
-.pc-note{font-size:11px;color:var(--green);font-weight:700;margin-top:4px;font-family:var(--fd)}
-.pbadge{position:absolute;top:-8px;right:10px;background:var(--coral);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px;font-family:var(--fd)}
-.auth-or{text-align:center;font-size:11px;color:var(--text3);margin:14px 0;font-weight:700;letter-spacing:.06em;text-transform:uppercase;position:relative}
+.pc-note{font-size:11px;color:var(--green);font-weight:700;margin-top:3px;font-family:var(--fd)}
+.pbadge{position:absolute;top:-7px;right:8px;background:var(--coral);color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:999px;font-family:var(--fd)}
+.auth-or{text-align:center;font-size:11px;color:var(--text3);margin:12px 0;font-weight:700;letter-spacing:.06em;text-transform:uppercase;position:relative}
 .auth-or::before,.auth-or::after{content:'';position:absolute;top:50%;height:2px;background:var(--border);width:38%;border-radius:1px}
 .auth-or::before{left:0}.auth-or::after{right:0}
-.auth-back{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:var(--text2);cursor:pointer;background:none;border:none;font-family:var(--fd);letter-spacing:.04em;transition:color .2s}
+.auth-back{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:var(--text2);cursor:pointer;background:none;border:none;font-family:var(--fd);transition:color .2s}
 .auth-back:hover{color:var(--teal)}
-.auth-error{background:var(--coral-l);border:2px solid var(--coral);border-radius:var(--r-sm);padding:10px 14px;font-size:13px;color:var(--coral);font-weight:600;margin-bottom:14px;display:none}
+.auth-error{background:var(--coral-l);border:2px solid var(--coral);border-radius:var(--r-sm);padding:9px 13px;font-size:12px;color:var(--coral);font-weight:600;margin-bottom:12px;display:none}
 .auth-error.show{display:block}
 
-/* ── APP ── */
+/* ══ APP ══ */
 #screen-app{flex-direction:row;height:100vh;overflow:hidden}
-.sidebar{width:352px;min-width:352px;background:var(--surface);border-right:2px solid var(--border);display:flex;flex-direction:column;height:100vh;overflow:hidden;transition:background .3s}
-.sb-hd{padding:14px 18px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--surface)}
-.sb-logo{font-family:var(--fd);font-size:20px;font-weight:900;display:flex;align-items:center;gap:8px}
-.sb-logo .logo-badge{width:30px;height:30px;border-radius:9px;font-size:16px}
+.sidebar{width:348px;min-width:348px;background:var(--surface);border-right:2px solid var(--border);display:flex;flex-direction:column;height:100vh;overflow:hidden;transition:background .3s}
+.sb-hd{padding:13px 16px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.sb-logo{font-family:var(--fd);font-size:19px;font-weight:900;display:flex;align-items:center;gap:7px}
+.sb-logo .logo-badge{width:28px;height:28px;border-radius:8px;font-size:15px}
 .sb-logo span{color:var(--teal)}
-.ubadge{display:flex;align-items:center;gap:10px}
-.uav{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--teal),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:15px;color:#fff}
-.uname{font-family:var(--fd);font-size:13px;font-weight:800;text-align:right}
-.uplan{font-size:10px;font-weight:800;color:var(--teal);background:var(--teal-l);padding:2px 8px;border-radius:999px;display:inline-block;margin-top:2px;font-family:var(--fd)}
+.ubadge{display:flex;align-items:center;gap:8px}
+.uav{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:14px;color:#fff}
+.uname{font-family:var(--fd);font-size:12px;font-weight:800;text-align:right}
+.uplan{font-size:10px;font-weight:800;color:var(--teal);background:var(--teal-l);padding:2px 7px;border-radius:999px;display:inline-block;margin-top:2px;font-family:var(--fd)}
 .sb-nav{display:flex;border-bottom:2px solid var(--border);background:var(--bg2)}
-.nb{flex:1;padding:12px 4px 14px;font-size:9px;font-weight:800;color:var(--text3);cursor:pointer;font-family:var(--fd);border:none;background:transparent;text-transform:uppercase;letter-spacing:.08em;display:flex;flex-direction:column;align-items:center;gap:4px;transition:all .2s;border-bottom:3px solid transparent;margin-bottom:-2px}
-.nb .ni{font-size:20px;line-height:1}
+.nb{flex:1;padding:10px 4px 13px;font-size:9px;font-weight:800;color:var(--text3);cursor:pointer;font-family:var(--fd);border:none;background:transparent;text-transform:uppercase;letter-spacing:.08em;display:flex;flex-direction:column;align-items:center;gap:4px;transition:all .2s;border-bottom:3px solid transparent;margin-bottom:-2px}
+.nb .ni{font-size:19px;line-height:1}
 .nb.active{color:var(--teal);border-bottom-color:var(--teal);background:var(--surface)}
 .nb:hover:not(.active){color:var(--text2);background:var(--surface2)}
 .sb-body{flex:1;overflow-y:auto;background:var(--bg);transition:background .3s}
 .sb-body::-webkit-scrollbar{width:0}
 .panel{display:none}
 .panel.active{display:block}
-.p-wrap{padding:14px}
-.sbanner{background:linear-gradient(135deg,var(--teal-l),var(--purple-l));border:2px solid rgba(0,194,199,.2);border-radius:var(--r);padding:13px 15px;margin-bottom:13px;display:flex;gap:10px;align-items:flex-start}
-.sbi{font-size:22px;flex-shrink:0;line-height:1.2}
-.sbl{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:3px;font-family:var(--fd)}
+.p-wrap{padding:13px}
+
+/* Banner */
+.sbanner{background:linear-gradient(135deg,var(--teal-l),var(--purple-l));border:2px solid rgba(0,194,199,.2);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start}
+.sbi{font-size:20px;flex-shrink:0;line-height:1.2}
+.sbl{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:2px;font-family:var(--fd)}
 .sbt{font-size:12px;color:var(--text);line-height:1.5}
-.sbox{display:flex;gap:8px;margin-bottom:11px}
-.si{flex:1;padding:11px 16px;background:var(--surface);border:2px solid var(--border);border-radius:999px;color:var(--text);font-family:var(--fb);font-size:13px;outline:none;transition:all .2s}
+
+/* Search */
+.sbox{display:flex;gap:8px;margin-bottom:10px}
+.si{flex:1;padding:10px 14px;background:var(--surface);border:2px solid var(--border);border-radius:999px;color:var(--text);font-family:var(--fb);font-size:13px;outline:none;transition:all .2s}
 .si:focus{border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-l)}
 .si::placeholder{color:var(--text3)}
-.sbtn{width:42px;height:42px;border-radius:50%;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;transition:all .2s;flex-shrink:0;box-shadow:0 4px 12px rgba(0,194,199,.35)}
+.sbtn{width:40px;height:40px;border-radius:50%;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;transition:all .2s;flex-shrink:0;box-shadow:0 4px 12px rgba(0,194,199,.35)}
 .sbtn:hover{background:var(--teal-d);transform:scale(1.06)}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.chip{padding:6px 13px;border-radius:999px;font-size:11px;font-weight:800;background:var(--surface);border:2px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;font-family:var(--fd)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chip{padding:5px 12px;border-radius:999px;font-size:11px;font-weight:800;background:var(--surface);border:2px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;font-family:var(--fd)}
 .chip:hover{border-color:var(--teal);color:var(--teal)}
 .chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
-.slabel{font-family:var(--fd);font-size:11px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.slabel{font-family:var(--fd);font-size:11px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
 .scnt{background:var(--teal-l);color:var(--teal);font-size:11px;padding:2px 8px;border-radius:999px}
-.scard{background:var(--surface);border-bottom:2px solid var(--border);padding:15px;cursor:pointer;transition:all .2s;border-left:3px solid transparent}
+
+/* Spot cards */
+.scard{background:var(--surface);border-bottom:2px solid var(--border);padding:14px;cursor:pointer;transition:all .2s;border-left:3px solid transparent}
 .scard:hover{background:var(--surface2);border-left-color:var(--teal);transform:translateX(2px)}
 .scard:first-child{border-top:2px solid var(--border)}
 .sc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px}
-.sc-nm{font-family:var(--fd);font-weight:800;font-size:15px}
+.sc-nm{font-family:var(--fd);font-weight:800;font-size:14px}
 .sc-dt{font-size:11px;color:var(--text3);font-weight:700}
-.sc-ad{font-size:12px;color:var(--text2);margin-bottom:9px}
-.stags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
-.st{padding:3px 9px;border-radius:6px;font-size:10px;font-weight:800;font-family:var(--fd);letter-spacing:.04em}
+.sc-ad{font-size:12px;color:var(--text2);margin-bottom:8px}
+.stags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+.st{padding:3px 8px;border-radius:6px;font-size:10px;font-weight:800;font-family:var(--fd);letter-spacing:.04em}
 .st-g{background:var(--green-l);color:var(--green)}
 .st-o{background:var(--orange-l);color:var(--orange)}
 .st-r{background:var(--coral-l);color:var(--coral)}
 .st-b{background:var(--teal-l);color:var(--teal)}
 .st-gray{background:var(--bg2);color:var(--text2)}
-.sc-ft{display:flex;justify-content:space-between;align-items:baseline}
-.sc-pr{font-family:var(--fd);font-size:20px;font-weight:900}
-.sc-pr small{font-size:11px;color:var(--text3);font-family:var(--fb);font-weight:400}
+.sc-ft{display:flex;justify-content:space-between;align-items:center}
+.sc-slots{font-size:12px;color:var(--text2);font-weight:700;font-family:var(--fd)}
 .sc-rt{font-size:12px;color:var(--text2);font-weight:700;font-family:var(--fd)}
-.ocard{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:10px}
-.oct{font-family:var(--fd);font-size:13px;font-weight:800;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.oct-dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
-.days{display:flex;gap:6px;flex-wrap:wrap}
-.db{width:40px;height:40px;border-radius:12px;border:2px solid var(--border);background:var(--bg2);color:var(--text2);font-size:12px;font-weight:800;cursor:pointer;transition:all .2s;font-family:var(--fd);display:flex;align-items:center;justify-content:center}
+.sc-empty{padding:32px 14px;text-align:center;color:var(--text3);font-size:13px;font-weight:600;font-family:var(--fd)}
+
+/* Offer panel */
+.offer-wrap{padding:13px}
+.ocard{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px}
+.oct{font-family:var(--fd);font-size:13px;font-weight:800;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.oct-dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.days{display:flex;gap:5px;flex-wrap:wrap}
+.db{width:38px;height:38px;border-radius:11px;border:2px solid var(--border);background:var(--bg2);color:var(--text2);font-size:11px;font-weight:800;cursor:pointer;transition:all .2s;font-family:var(--fd);display:flex;align-items:center;justify-content:center}
 .db.on{border-color:var(--teal);background:var(--teal);color:#fff}
 .db:hover:not(.on){border-color:var(--teal);color:var(--teal)}
-.trange{display:flex;gap:10px;align-items:center;margin-top:10px}
-.trsep{color:var(--text3);font-weight:800;font-size:14px}
-.agrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ab{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg2);border:2px solid var(--border);border-radius:var(--r-sm);cursor:pointer;transition:all .2s;font-size:13px;font-weight:700;font-family:var(--fd);color:var(--text2)}
+.trange{display:flex;gap:8px;align-items:center;margin-top:10px}
+.trsep{color:var(--text3);font-weight:800;font-size:13px}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.ab{display:flex;align-items:center;gap:7px;padding:9px 11px;background:var(--bg2);border:2px solid var(--border);border-radius:var(--r-sm);cursor:pointer;transition:all .2s;font-size:12px;font-weight:700;font-family:var(--fd);color:var(--text2)}
 .ab.on{background:var(--teal-l);color:var(--teal);border-color:var(--teal)}
-.earn{background:linear-gradient(135deg,var(--teal),var(--purple));border-radius:var(--r);padding:22px;color:#fff;margin-bottom:12px}
-.earn-lbl{font-size:11px;opacity:.75;font-weight:700;margin-bottom:4px;letter-spacing:.06em;text-transform:uppercase;font-family:var(--fd)}
-.earn-amt{font-family:var(--fd);font-size:38px;font-weight:900;line-height:1}
-.earn-sub{font-size:11px;opacity:.65;margin-top:4px}
-.ai-hd{background:linear-gradient(135deg,var(--teal),var(--purple));border-radius:var(--r);padding:18px;margin-bottom:13px;color:#fff;display:flex;align-items:center;gap:14px}
-.ai-ic{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-.ai-t{font-family:var(--fd);font-weight:900;font-size:16px}
-.ai-s{font-size:12px;opacity:.7;margin-top:2px}
-.aichat{display:flex;flex-direction:column;gap:9px;max-height:290px;overflow-y:auto;margin-bottom:11px}
+
+/* Map pin step */
+.pin-instruction{background:linear-gradient(135deg,var(--teal-l),var(--purple-l));border:2px solid rgba(0,194,199,.25);border-radius:var(--r);padding:16px;margin-bottom:10px;text-align:center}
+.pin-instruction .pin-icon{font-size:36px;margin-bottom:8px}
+.pin-instruction h3{font-family:var(--fd);font-weight:800;font-size:15px;color:var(--text);margin-bottom:6px}
+.pin-instruction p{font-size:12px;color:var(--text2);line-height:1.5}
+.pin-coords{background:var(--surface);border:2px solid var(--border);border-radius:var(--r-sm);padding:10px 14px;font-size:12px;color:var(--text2);font-family:var(--fd);font-weight:600;margin-bottom:10px;display:none}
+.pin-coords.show{display:block}
+
+/* AI */
+.ai-hd{background:linear-gradient(135deg,var(--teal),var(--purple));border-radius:var(--r);padding:16px;margin-bottom:12px;color:#fff;display:flex;align-items:center;gap:12px}
+.ai-ic{width:44px;height:44px;border-radius:13px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ai-t{font-family:var(--fd);font-weight:900;font-size:15px}
+.ai-s{font-size:11px;opacity:.7;margin-top:2px}
+.aichat{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto;margin-bottom:10px}
 .aichat::-webkit-scrollbar{width:3px}
 .aichat::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-.amsg{max-width:88%;padding:11px 14px;font-size:13px;line-height:1.55;font-family:var(--fb);border-radius:14px}
-.amsg.bot{background:var(--surface);border:2px solid var(--border);border-radius:14px 14px 14px 3px;align-self:flex-start;color:var(--text)}
-.amsg.user{background:var(--teal);color:#fff;border-radius:14px 14px 3px 14px;align-self:flex-end}
+.amsg{max-width:88%;padding:10px 13px;font-size:13px;line-height:1.55;font-family:var(--fb);border-radius:13px}
+.amsg.bot{background:var(--surface);border:2px solid var(--border);border-radius:13px 13px 13px 3px;align-self:flex-start;color:var(--text)}
+.amsg.user{background:var(--teal);color:#fff;border-radius:13px 13px 3px 13px;align-self:flex-end}
 .aisugs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.aisug{padding:7px 12px;border-radius:999px;font-size:11px;font-weight:800;background:var(--surface);border:2px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;font-family:var(--fd)}
+.aisug{padding:6px 11px;border-radius:999px;font-size:11px;font-weight:800;background:var(--surface);border:2px solid var(--border);color:var(--text2);cursor:pointer;transition:all .2s;font-family:var(--fd)}
 .aisug:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-l)}
-.airow{display:flex;gap:8px}
-.ainput{flex:1;padding:11px 16px;background:var(--surface);border:2px solid var(--border);border-radius:999px;color:var(--text);font-family:var(--fb);font-size:13px;outline:none;transition:all .2s}
+.airow{display:flex;gap:7px}
+.ainput{flex:1;padding:10px 14px;background:var(--surface);border:2px solid var(--border);border-radius:999px;color:var(--text);font-family:var(--fb);font-size:13px;outline:none;transition:all .2s}
 .ainput:focus{border-color:var(--teal)}
 .ainput::placeholder{color:var(--text3)}
-.phero{background:linear-gradient(135deg,var(--teal),var(--purple));border-radius:var(--r);padding:20px;margin-bottom:12px;display:flex;align-items:center;gap:14px;color:#fff}
-.pavbig{width:52px;height:52px;border-radius:15px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:22px;color:#fff;flex-shrink:0}
-.pname{font-family:var(--fd);font-weight:900;font-size:17px}
-.pemail{font-size:12px;opacity:.7;margin-top:2px}
-.pplan-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.ppn{font-family:var(--fd);font-weight:800;font-size:14px}
-.ppe{font-size:12px;color:var(--text2);margin-top:2px}
-.pab{background:var(--green);color:#fff;font-size:10px;font-weight:800;padding:4px 12px;border-radius:999px;font-family:var(--fd)}
-.sgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
-.stile{background:var(--surface);border:2px solid var(--border);border-radius:var(--r-sm);padding:13px 10px;text-align:center}
-.stn{font-family:var(--fd);font-size:22px;font-weight:900;color:var(--teal)}
-.stl{font-size:9px;color:var(--text3);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:3px;font-family:var(--fd)}
+
+/* Profile */
+.phero{background:linear-gradient(135deg,var(--teal),var(--purple));border-radius:var(--r);padding:18px;margin-bottom:10px;display:flex;align-items:center;gap:13px;color:#fff}
+.pavbig{width:50px;height:50px;border-radius:14px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:21px;color:#fff;flex-shrink:0}
+.pname{font-family:var(--fd);font-weight:900;font-size:16px}
+.pemail{font-size:11px;opacity:.7;margin-top:2px}
+.pplan-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:13px 15px;display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.ppn{font-family:var(--fd);font-weight:800;font-size:13px}
+.ppe{font-size:11px;color:var(--text2);margin-top:2px}
+.pab{background:var(--green);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:999px;font-family:var(--fd)}
+.sgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:9px}
+.stile{background:var(--surface);border:2px solid var(--border);border-radius:var(--r-sm);padding:12px 8px;text-align:center}
+.stn{font-family:var(--fd);font-size:20px;font-weight:900;color:var(--teal)}
+.stl{font-size:9px;color:var(--text3);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:2px;font-family:var(--fd)}
 .mlist{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);overflow:hidden}
-.mi{display:flex;align-items:center;gap:13px;padding:13px 16px;cursor:pointer;transition:background .15s;font-size:13px;font-weight:700;background:none;border:none;color:var(--text);width:100%;text-align:left;font-family:var(--fd);border-bottom:2px solid var(--border)}
+.mi{display:flex;align-items:center;gap:12px;padding:12px 15px;cursor:pointer;transition:background .15s;font-size:13px;font-weight:700;background:none;border:none;color:var(--text);width:100%;text-align:left;font-family:var(--fd);border-bottom:2px solid var(--border)}
 .mi:last-child{border-bottom:none}
 .mi:hover{background:var(--surface2)}
-.mic{width:32px;height:32px;border-radius:10px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.mic{width:30px;height:30px;border-radius:9px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 .mil{flex:1}
-.mia{color:var(--text3);font-size:13px}
+.mia{color:var(--text3)}
+
+/* MAP */
 .map-wrap{flex:1;position:relative}
 #map{width:100%;height:100%}
-.mtopbar{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:500;display:flex;gap:0;box-shadow:var(--shadow);border-radius:999px;overflow:hidden;border:2px solid var(--border)}
-.mtb{background:var(--surface);border:none;padding:10px 20px;font-size:12px;font-weight:800;cursor:pointer;transition:all .2s;color:var(--text2);font-family:var(--fd);white-space:nowrap}
+.map-mode-pin #map{cursor:crosshair !important}
+.mtopbar{position:absolute;top:13px;left:50%;transform:translateX(-50%);z-index:500;display:flex;gap:0;box-shadow:var(--shadow);border-radius:999px;overflow:hidden;border:2px solid var(--border)}
+.mtb{background:var(--surface);border:none;padding:9px 18px;font-size:12px;font-weight:800;cursor:pointer;transition:all .2s;color:var(--text2);font-family:var(--fd);white-space:nowrap}
 .mtb+.mtb{border-left:2px solid var(--border)}
 .mtb.on{background:var(--teal);color:#fff}
-.mfab{position:absolute;bottom:80px;right:14px;z-index:500;display:flex;flex-direction:column;gap:8px}
-.fab{width:42px;height:42px;border-radius:50%;background:var(--surface);border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .2s;box-shadow:var(--shadow)}
+.mfab{position:absolute;bottom:76px;right:13px;z-index:500;display:flex;flex-direction:column;gap:7px}
+.fab{width:40px;height:40px;border-radius:50%;background:var(--surface);border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s;box-shadow:var(--shadow)}
 .fab:hover{border-color:var(--teal);transform:scale(1.08);box-shadow:var(--shadow-lg)}
-.mleg{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:500;display:flex;gap:14px;align-items:center;background:var(--surface);border:2px solid var(--border);border-radius:999px;padding:9px 20px;box-shadow:var(--shadow);font-size:11px;font-weight:800;font-family:var(--fd);color:var(--text2);white-space:nowrap}
+.mleg{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:500;display:flex;gap:13px;align-items:center;background:var(--surface);border:2px solid var(--border);border-radius:999px;padding:8px 18px;box-shadow:var(--shadow);font-size:11px;font-weight:800;font-family:var(--fd);color:var(--text2);white-space:nowrap}
 .ldot{width:9px;height:9px;border-radius:50%}
+
+/* Pin mode banner */
+.pin-mode-bar{position:absolute;top:13px;left:50%;transform:translateX(-50%);z-index:501;background:var(--teal);color:#fff;border-radius:999px;padding:10px 24px;font-family:var(--fd);font-weight:800;font-size:13px;box-shadow:var(--shadow-lg);display:none;white-space:nowrap;gap:10px;align-items:center}
+.pin-mode-bar.show{display:flex}
+.pin-cancel{background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:999px;padding:4px 12px;font-family:var(--fd);font-weight:800;font-size:12px;cursor:pointer}
+
+/* MODAL */
 .mov{position:fixed;inset:0;z-index:100;background:rgba(18,33,58,.5);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px}
 .mov.open{display:flex}
-.modal{background:var(--surface);border:2px solid var(--border);border-radius:22px;width:100%;max-width:460px;max-height:90vh;overflow-y:auto;padding:30px;box-shadow:var(--shadow-lg);animation:min .22s ease}
+.modal{background:var(--surface);border:2px solid var(--border);border-radius:22px;width:100%;max-width:460px;max-height:90vh;overflow-y:auto;padding:28px;box-shadow:var(--shadow-lg);animation:min .22s ease}
 @keyframes min{from{opacity:0;transform:scale(.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.mhdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
-.mttl{font-family:var(--fd);font-size:22px;font-weight:900}
+.mhdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+.mttl{font-family:var(--fd);font-size:21px;font-weight:900}
 .msub{font-size:12px;color:var(--text2);margin-top:3px}
-.mcls{background:var(--bg2);border:2px solid var(--border);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:18px;color:var(--text2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.mcls{background:var(--bg2);border:2px solid var(--border);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:17px;color:var(--text2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
 .mcls:hover{background:var(--coral-l);color:var(--coral);border-color:var(--coral)}
-.drow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.dc{background:var(--bg2);border-radius:var(--r-sm);padding:12px 14px;border:2px solid var(--border)}
-.dc label{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:5px;font-family:var(--fd)}
-.dc span{font-family:var(--fd);font-size:17px;font-weight:800}
-.slotbtn{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:var(--r-sm);border:2px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .2s;margin-bottom:8px;width:100%}
-.slotbtn:hover:not(.un){border-color:var(--teal);background:var(--teal-l)}
-.slotbtn.sel{border-color:var(--teal);background:var(--teal)}
-.slotbtn.sel .slt,.slotbtn.sel .sld,.slotbtn.sel .slp{color:#fff}
-.slotbtn.un{opacity:.4;cursor:not-allowed}
-.slt{font-family:var(--fd);font-weight:800;font-size:15px;color:var(--text)}
-.sld{font-size:12px;color:var(--text2);flex:1;font-weight:600}
-.slp{font-family:var(--fd);font-weight:900;font-size:16px;color:var(--teal)}
-.nc{position:fixed;top:14px;right:14px;z-index:300;display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.ntf{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:13px 16px;box-shadow:var(--shadow-lg);max-width:288px;pointer-events:auto;display:flex;align-items:flex-start;gap:10px;animation:nin .25s ease}
+.drow{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
+.dc{background:var(--bg2);border-radius:var(--r-sm);padding:11px 13px;border:2px solid var(--border)}
+.dc label{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:4px;font-family:var(--fd)}
+.dc span{font-family:var(--fd);font-size:16px;font-weight:800}
+
+/* Slot grid */
+.slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:16px}
+.slot-btn{padding:10px 6px;border-radius:var(--r-sm);border:2px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .2s;text-align:center;font-family:var(--fd)}
+.slot-btn:hover:not(.taken):not(.locked){border-color:var(--teal);background:var(--teal-l)}
+.slot-btn.sel{border-color:var(--teal);background:var(--teal);color:#fff}
+.slot-btn.taken{background:var(--coral-l);border-color:var(--coral);cursor:not-allowed}
+.slot-btn.locked{background:var(--bg2);border-color:var(--border2);cursor:not-allowed;opacity:.6}
+.slot-time{font-size:12px;font-weight:800;color:inherit}
+.slot-status{font-size:10px;font-weight:700;margin-top:3px;color:inherit;opacity:.75}
+.slot-btn.taken .slot-time,.slot-btn.taken .slot-status{color:var(--coral)}
+.slot-btn.locked .slot-time{color:var(--text3)}
+
+/* Plan limit banner */
+.plan-limit-box{background:var(--purple-l);border:2px solid rgba(123,97,255,.25);border-radius:var(--r-sm);padding:10px 14px;font-size:12px;color:var(--purple);font-weight:600;margin-bottom:14px;display:none}
+.plan-limit-box.show{display:block}
+
+/* NOTIF */
+.nc{position:fixed;top:13px;right:13px;z-index:300;display:flex;flex-direction:column;gap:7px;pointer-events:none}
+.ntf{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:12px 15px;box-shadow:var(--shadow-lg);max-width:280px;pointer-events:auto;display:flex;align-items:flex-start;gap:10px;animation:nin .25s ease}
 .ntf.s{border-left:4px solid var(--green)}
 .ntf.e{border-left:4px solid var(--coral)}
 .ntf.i{border-left:4px solid var(--teal)}
-.ni2{font-size:18px;flex-shrink:0;line-height:1.2}
-.ntl{font-family:var(--fd);font-weight:800;font-size:13px}
+.ni2{font-size:17px;flex-shrink:0;line-height:1.2}
+.ntl{font-family:var(--fd);font-weight:800;font-size:12px}
 .ntd{font-size:11px;color:var(--text2);margin-top:2px}
 @keyframes nin{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+
+/* Leaflet overrides */
 .leaflet-popup-content-wrapper{background:var(--surface)!important;border:2px solid var(--border)!important;border-radius:16px!important;box-shadow:var(--shadow-lg)!important}
 .leaflet-popup-tip{background:var(--surface)!important}
-.leaflet-popup-content{margin:14px 16px!important;font-family:var(--fb)!important}
-.divider{height:2px;background:var(--border);margin:12px 0;border-radius:1px}
-.mt10{margin-top:10px}.mt16{margin-top:16px}
+.leaflet-popup-content{margin:13px 15px!important;font-family:var(--fb)!important}
+
+/* Utils */
+.divider{height:2px;background:var(--border);margin:11px 0;border-radius:1px}
+.mt10{margin-top:10px}.mt14{margin-top:14px}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:768px){
   #screen-app{flex-direction:column-reverse}
   .sidebar{width:100%;min-width:0;height:52vh;border-right:none;border-top:2px solid var(--border)}
   .map-wrap{height:48vh}
-  .l-hero{grid-template-columns:1fr}
-  .l-hero-right{display:none}
+  .l-hero{grid-template-columns:1fr}.l-hero-right{display:none}
   .how-grid,.plans-grid,.device-grid{grid-template-columns:1fr}
-  .auth-wrap{flex-direction:column}
-  .auth-left{display:none}
-  .l-nav,.l-section,.l-footer-cta,.l-footer,.l-visual-strip{padding-left:24px;padding-right:24px}
-  .l-hero-left{padding:48px 24px}
+  .auth-wrap{flex-direction:column}.auth-left{display:none}
+  .l-nav,.l-section,.l-footer-cta,.l-footer,.l-visual-strip{padding-left:22px;padding-right:22px}
+  .l-hero-left{padding:44px 22px}
 }
 </style>
 </head>
@@ -361,18 +404,15 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
 
 <!-- LOADER -->
 <div class="loader-overlay" id="loader">
-  <div class="loader-logo">
-    <div class="logo-badge">🅿️</div>
-    Park<span style="color:var(--teal)">ly</span>
-  </div>
+  <div class="loader-logo"><div class="logo-badge">🅿️</div>Park<span style="color:var(--teal)">ly</span></div>
   <div class="loader-spin"></div>
 </div>
 
 <div class="nc" id="nc"></div>
 
-<!-- ══════════════════════════
+<!-- ══════════════════════
      LANDING
-══════════════════════════ -->
+══════════════════════ -->
 <div class="screen active" id="screen-landing">
   <nav class="l-nav">
     <div class="logo"><div class="logo-badge">🅿️</div>Park<span>ly</span></div>
@@ -382,7 +422,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
       <button class="btn btn-ghost btn-sm" onclick="document.getElementById('s-plans').scrollIntoView({behavior:'smooth'})">Tarifs</button>
       <button class="btn btn-ghost btn-sm" onclick="showAuth('login')">Connexion</button>
       <button class="btn btn-teal btn-sm" onclick="showAuth('register')">Commencer →</button>
-      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn-landing">🌙</button>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </div>
   </nav>
   <section class="l-hero">
@@ -391,7 +431,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
       <h1 class="l-h1">Fini tourner en rond pour<br><span class="accent">une place 🚗</span></h1>
       <p class="l-sub">Les garages privés inutilisés de vos voisins deviennent vos places de stationnement. Réservez en 10 secondes, la porte s'ouvre automatiquement.</p>
       <div class="l-cta">
-        <button class="btn btn-teal btn-lg" onclick="showAuth('register')">Trouver une place maintenant →</button>
+        <button class="btn btn-teal btn-lg" onclick="showAuth('register')">Trouver une place →</button>
         <button class="btn btn-ghost btn-lg" onclick="showAuth('register')">💰 Louer mon garage</button>
       </div>
       <div class="l-stats">
@@ -406,25 +446,25 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
         <div class="lmc-label">⚡ Disponible maintenant</div>
         <div class="lmc-name">Garage Maarif Centre</div>
         <div class="lmc-detail">📍 180m · Couvert · Sécurisé</div>
-        <div class="lmc-price">15 DH <span>/ heure</span></div>
+        <div class="lmc-status">✅ 6 créneaux libres aujourd'hui</div>
       </div>
     </div>
   </section>
   <div class="l-visual-strip">
     <div class="vs-item"><div class="vs-icon">🗺️</div><div class="vs-title">Carte temps réel</div><div class="vs-desc">Toutes les places libres autour de vous, mise à jour en continu.</div></div>
-    <div class="vs-item"><div class="vs-icon">🔐</div><div class="vs-title">Ouverture auto</div><div class="vs-desc">Le boîtier Parkly détecte votre téléphone et ouvre la porte pour vous.</div></div>
+    <div class="vs-item"><div class="vs-icon">🔐</div><div class="vs-title">Ouverture auto</div><div class="vs-desc">Le boîtier Parkly détecte votre téléphone et ouvre la porte.</div></div>
     <div class="vs-item"><div class="vs-icon">⚡</div><div class="vs-title">Réservation en 1 clic</div><div class="vs-desc">Choisissez votre créneau, c'est confirmé instantanément.</div></div>
-    <div class="vs-item"><div class="vs-icon">🤖</div><div class="vs-title">Assistant IA</div><div class="vs-desc">Notre IA trouve la meilleure option selon votre trajet et budget.</div></div>
+    <div class="vs-item"><div class="vs-icon">🤖</div><div class="vs-title">Assistant IA</div><div class="vs-desc">Notre IA trouve la meilleure option selon votre trajet.</div></div>
   </div>
   <section class="l-section" id="s-how">
     <div class="section-eyebrow">Comment ça marche</div>
     <h2 class="section-title">Simple comme <span class="accent">bonjour. 👋</span></h2>
     <div class="how-grid">
-      <div class="how-card"><div class="how-num">01</div><div class="how-title">Vous choisissez une place 📍</div><div class="how-desc">La carte affiche toutes les places disponibles en temps réel — avec le prix, la distance, et les créneaux horaires libres.</div></div>
-      <div class="how-card"><div class="how-num">02</div><div class="how-title">Vous réservez votre créneau ⏱️</div><div class="how-desc">Sélectionnez l'heure qui vous convient. Votre abonnement Parkly couvre la réservation — pas de paiement à chaque fois.</div></div>
-      <div class="how-card"><div class="how-num">03</div><div class="how-title">La porte s'ouvre toute seule 🔓</div><div class="how-desc">Le boîtier Parkly détecte votre smartphone via Bluetooth dès que vous approchez, et déverrouille automatiquement le garage.</div></div>
-      <div class="how-card"><div class="how-num">04</div><div class="how-title">Vous avez un garage vide ? 🏠</div><div class="how-desc">Mettez-le à disposition pendant vos absences. En échange, obtenez <strong>-40% sur votre abonnement</strong> dès 10 jours/mois.</div></div>
-      <div class="how-card"><div class="how-num">05</div><div class="how-title">Zéro cash, zéro badge 💳</div><div class="how-desc">Tout passe par l'app. Votre téléphone est votre clé, votre ticket, et votre moyen de paiement.</div></div>
+      <div class="how-card"><div class="how-num">01</div><div class="how-title">Choisissez une place 📍</div><div class="how-desc">La carte affiche toutes les places en temps réel avec leurs créneaux horaires et leur statut (libre ou complet).</div></div>
+      <div class="how-card"><div class="how-num">02</div><div class="how-title">Réservez votre créneau ⏱️</div><div class="how-desc">Sélectionnez l'heure qui vous convient. Votre abonnement Parkly couvre l'accès — pas de paiement à chaque réservation.</div></div>
+      <div class="how-card"><div class="how-num">03</div><div class="how-title">La porte s'ouvre 🔓</div><div class="how-desc">Le boîtier Parkly détecte votre smartphone via Bluetooth et déverrouille automatiquement le garage à votre arrivée.</div></div>
+      <div class="how-card"><div class="how-num">04</div><div class="how-title">Vous avez un garage ? 🏠</div><div class="how-desc">Publiez votre place en 2 minutes. Placez un pin sur la carte, définissez vos horaires, c'est visible immédiatement.</div></div>
+      <div class="how-card"><div class="how-num">05</div><div class="how-title">Remise propriétaire 💸</div><div class="how-desc">Mettez votre place à dispo au moins 10 jours/mois et obtenez <strong>-40% sur votre abonnement</strong> automatiquement.</div></div>
       <div class="how-card"><div class="how-num">06</div><div class="how-title">Place occupée ? On gère. 🛡️</div><div class="how-desc">Photo dans l'app → remboursement immédiat → pénalité au propriétaire. Vous êtes protégé, toujours.</div></div>
     </div>
   </section>
@@ -434,22 +474,22 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
         <div class="section-eyebrow">Le Device Parkly</div>
         <h2 class="section-title">Une serrure intelligente.<br><span class="accent">Sur chaque porte. 🔐</span></h2>
         <div class="tech-list">
-          <div class="tech-item"><div class="tech-icon" style="background:var(--teal-l)">📡</div><div><div class="tech-title">Bluetooth Low Energy 5.0</div><div class="tech-desc">Détection automatique à 5 mètres. Batterie 18 mois. Aucun WiFi ni carte SIM requis chez le propriétaire.</div></div></div>
-          <div class="tech-item"><div class="tech-icon" style="background:var(--purple-l)">🔳</div><div><div class="tech-title">QR Code de secours</div><div class="tech-desc">Si le Bluetooth est indisponible, un QR code unique généré en temps réel dans l'app prend le relais.</div></div></div>
-          <div class="tech-item"><div class="tech-icon" style="background:var(--yellow-l)">🔧</div><div><div class="tech-title">Installation gratuite incluse</div><div class="tech-desc">Un technicien Parkly installe le boîtier chez vous sous 5 jours ouvrables. Loué avec votre abonnement, sans frais initiaux.</div></div></div>
+          <div class="tech-item"><div class="tech-icon" style="background:var(--teal-l)">📡</div><div><div class="tech-title">Bluetooth Low Energy 5.0</div><div class="tech-desc">Détection automatique à 5 mètres. Batterie 18 mois. Aucun WiFi ni carte SIM requis.</div></div></div>
+          <div class="tech-item"><div class="tech-icon" style="background:var(--purple-l)">🔳</div><div><div class="tech-title">QR Code de secours</div><div class="tech-desc">Si le Bluetooth est indisponible, un QR code unique généré en temps réel prend le relais.</div></div></div>
+          <div class="tech-item"><div class="tech-icon" style="background:var(--yellow-l)">🔧</div><div><div class="tech-title">Installation gratuite incluse</div><div class="tech-desc">Un technicien Parkly installe le boîtier chez vous sous 5 jours ouvrables, sans frais.</div></div></div>
         </div>
-        <div class="mt16"><button class="btn btn-teal" onclick="showAuth('register')">Je veux un boîtier →</button></div>
+        <div class="mt14"><button class="btn btn-teal" onclick="showAuth('register')">Je veux un boîtier →</button></div>
       </div>
       <div class="device-visual">
         <div class="device-ring">
           <div class="device-ring2"></div>
           <div class="device-core">🔐</div>
-          <div class="device-ping" style="width:12px;height:12px;top:10px;right:40px"></div>
-          <div class="device-ping" style="width:9px;height:9px;bottom:25px;left:30px;animation-delay:.7s"></div>
+          <div class="device-ping" style="width:11px;height:11px;top:10px;right:38px"></div>
+          <div class="device-ping" style="width:8px;height:8px;bottom:24px;left:28px;animation-delay:.7s"></div>
         </div>
-        <div class="device-tag" style="top:30px;left:-10px">📡 BLE 5.0</div>
-        <div class="device-tag" style="bottom:40px;right:-10px">🔋 18 mois</div>
-        <div class="device-tag" style="top:50%;right:-20px;transform:translateY(-50%)">🛡️ IP65</div>
+        <div class="device-tag" style="top:28px;left:-8px">📡 BLE 5.0</div>
+        <div class="device-tag" style="bottom:38px;right:-8px">🔋 18 mois</div>
+        <div class="device-tag" style="top:50%;right:-18px;transform:translateY(-50%)">🛡️ IP65</div>
       </div>
     </div>
   </section>
@@ -464,8 +504,8 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
         <div class="plan-divider"></div>
         <div class="plan-features">
           <div class="pf"><span class="pf-check">✅</span>15 réservations par mois</div>
-          <div class="pf"><span class="pf-check">✅</span>Créneaux jusqu'à 3h</div>
-          <div class="pf"><span class="pf-check">✅</span>Réservation le jour même</div>
+          <div class="pf"><span class="pf-check">✅</span>Créneaux jusqu'à 3h maximum</div>
+          <div class="pf"><span class="pf-check">✅</span>Réservation le jour même uniquement</div>
           <div class="pf"><span class="pf-check">✅</span>Ouverture automatique via app</div>
           <div class="pf"><span class="pf-check">✅</span>Support 5j/7</div>
         </div>
@@ -479,8 +519,8 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
         <div class="plan-divider"></div>
         <div class="plan-features">
           <div class="pf"><span class="pf-check">✅</span><strong>Réservations illimitées</strong></div>
-          <div class="pf"><span class="pf-check">✅</span>Créneaux jusqu'à 12h</div>
-          <div class="pf"><span class="pf-check">✅</span>Réservation 7 jours à l'avance</div>
+          <div class="pf"><span class="pf-check">✅</span>Créneaux jusqu'à 12h maximum</div>
+          <div class="pf"><span class="pf-check">✅</span><strong>Réservation jusqu'à 7 jours à l'avance</strong></div>
           <div class="pf"><span class="pf-check">✅</span>Ouverture automatique via app</div>
           <div class="pf"><span class="pf-check">✅</span>Support prioritaire 7j/7</div>
           <div class="pf"><span class="pf-check">✅</span>Accès en avant-première aux nouvelles places</div>
@@ -488,32 +528,32 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
         <button class="btn btn-teal w100" onclick="showAuth('register')">Choisir Pro →</button>
       </div>
     </div>
-    <p style="margin-top:18px;font-size:13px;color:var(--text2)">✅ 7 jours d'essai gratuit · Aucune carte requise · Annulation en 1 clic</p>
+    <p style="margin-top:16px;font-size:13px;color:var(--text2)">✅ 7 jours d'essai gratuit · Aucune carte requise · Annulation en 1 clic</p>
   </section>
   <section class="l-footer-cta">
     <div class="section-eyebrow" style="justify-content:center">Disponible maintenant à Casablanca</div>
-    <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto 32px">Stationnez autrement.<br><span class="accent">Dès aujourd'hui. 🚀</span></h2>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <h2 class="section-title" style="text-align:center;max-width:560px;margin:0 auto 28px">Stationnez autrement.<br><span class="accent">Dès aujourd'hui. 🚀</span></h2>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <button class="btn btn-teal btn-lg" onclick="showAuth('register')">Commencer gratuitement →</button>
       <button class="btn btn-ghost btn-lg" onclick="showAuth('login')">J'ai déjà un compte</button>
     </div>
-    <p style="margin-top:18px;font-size:13px;color:var(--text3);font-weight:600">7 jours gratuits · Sans engagement · Annulation immédiate</p>
+    <p style="margin-top:16px;font-size:12px;color:var(--text3);font-weight:600">7 jours gratuits · Sans engagement · Annulation immédiate</p>
   </section>
   <footer class="l-footer">
-    <div class="logo" style="font-size:18px"><div class="logo-badge" style="width:28px;height:28px;border-radius:8px;font-size:14px">🅿️</div>Park<span>ly</span></div>
+    <div class="logo" style="font-size:17px"><div class="logo-badge" style="width:26px;height:26px;border-radius:8px;font-size:13px">🅿️</div>Park<span>ly</span></div>
     <span>Casablanca, Maroc · 2026</span>
     <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
   </footer>
 </div>
 
-<!-- ══════════════════════════
+<!-- ══════════════════════
      AUTH
-══════════════════════════ -->
+══════════════════════ -->
 <div class="screen" id="screen-auth">
   <div class="auth-topbar">
-    <div style="display:flex;align-items:center;gap:12px">
+    <div style="display:flex;align-items:center;gap:10px">
       <button class="auth-back" onclick="showScreen('landing')">← Retour</button>
-      <div class="logo" style="font-size:20px"><div class="logo-badge" style="width:28px;height:28px;border-radius:8px;font-size:14px">🅿️</div>Park<span>ly</span></div>
+      <div class="logo" style="font-size:19px"><div class="logo-badge" style="width:26px;height:26px;border-radius:8px;font-size:13px">🅿️</div>Park<span>ly</span></div>
     </div>
     <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
   </div>
@@ -523,7 +563,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
         <div class="al-title">Rejoignez<br><span class="accent">Parkly 🎉</span></div>
         <p class="al-sub">Plus de 2 000 casablancais trouvent leur place en moins de 30 secondes chaque matin. Rejoignez-les.</p>
         <div class="testi-card">
-          <div class="testi-q">"Je ne cherche plus de place depuis 8 mois. Je réserve la veille et la porte est ouverte quand j'arrive. Magique !"</div>
+          <div class="testi-q">"Je ne cherche plus de place depuis 8 mois. Je réserve la veille et la porte est ouverte quand j'arrive !"</div>
           <div class="testi-au">
             <div class="tav">K</div>
             <div><div class="tname">Karim Ouazzani</div><div style="display:flex;gap:6px;align-items:center;margin-top:2px"><span class="stars">★★★★★</span><span class="tdtl">Abonné Pro · Maarif</span></div></div>
@@ -538,7 +578,6 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
           <button class="atab" id="tab-reg" onclick="switchTab('register')">Inscription</button>
         </div>
         <div class="auth-error" id="auth-error"></div>
-        <!-- LOGIN -->
         <div id="form-login">
           <div class="fg"><label class="fl">Email</label><input class="fi" type="email" id="le" placeholder="vous@email.com"></div>
           <div class="fg"><label class="fl">Mot de passe</label><input class="fi" type="password" id="lp" placeholder="••••••••"></div>
@@ -546,9 +585,8 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
           <div class="auth-or">ou</div>
           <button class="btn btn-ghost w100" onclick="demoLogin()">🎮 Continuer en démo</button>
         </div>
-        <!-- REGISTER -->
         <div id="form-reg" style="display:none">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
             <div class="fg"><label class="fl">Prénom</label><input class="fi" type="text" id="rf" placeholder="Younes"></div>
             <div class="fg"><label class="fl">Nom</label><input class="fi" type="text" id="rl" placeholder="Bennani"></div>
           </div>
@@ -561,7 +599,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
               <div class="pc" id="pc-basic" onclick="selPlan('basic')"><div class="pc-n">Essentiel</div><div class="pc-p">99 <span>DH/mois</span></div><div class="pc-note">→ 59 DH si proprio</div></div>
               <div class="pc sel" id="pc-pro" onclick="selPlan('pro')"><div class="pbadge">⭐ Top</div><div class="pc-n">Pro</div><div class="pc-p">199 <span>DH/mois</span></div><div class="pc-note">→ 119 DH si proprio</div></div>
             </div>
-            <p style="font-size:11px;color:var(--text3);margin-top:8px;font-weight:600">✅ 7 jours gratuits · Aucune carte requise</p>
+            <p style="font-size:11px;color:var(--text3);margin-top:7px;font-weight:600">✅ 7 jours gratuits · Aucune carte requise</p>
           </div>
           <button class="btn btn-teal w100" id="btn-register" onclick="doRegister()">Créer mon compte 🚀</button>
         </div>
@@ -570,15 +608,15 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
   </div>
 </div>
 
-<!-- ══════════════════════════
+<!-- ══════════════════════
      APP
-══════════════════════════ -->
+══════════════════════ -->
 <div class="screen" id="screen-app">
   <div class="sidebar">
     <div class="sb-hd">
       <div class="sb-logo"><div class="logo-badge">🅿️</div>Park<span>ly</span></div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <button class="theme-toggle" style="width:34px;height:34px;font-size:16px" onclick="toggleTheme()">🌙</button>
+      <div style="display:flex;align-items:center;gap:7px">
+        <button class="theme-toggle" style="width:32px;height:32px;font-size:15px" onclick="toggleTheme()">🌙</button>
         <div class="ubadge">
           <div><div class="uname" id="uname">Younes B.</div><div class="uplan" id="uplan">Plan Pro</div></div>
           <div class="uav" id="uav">Y</div>
@@ -592,7 +630,8 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
       <button class="nb" onclick="goPanel('profile')" id="nav-profile"><span class="ni">👤</span>Profil</button>
     </div>
     <div class="sb-body">
-      <!-- SEARCH -->
+
+      <!-- SEARCH PANEL -->
       <div class="panel active" id="panel-search">
         <div class="p-wrap">
           <div class="sbanner"><div class="sbi">⚡</div><div><div class="sbl">En ce moment</div><div class="sbt" id="sbt">Chargement…</div></div></div>
@@ -604,36 +643,89 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
             <div class="chip" onclick="toggleChip(this,'securise')">🔒 Sécurisé</div>
             <div class="chip" onclick="toggleChip(this,'ev')">⚡ EV</div>
           </div>
-          <div class="slabel">Places disponibles <span class="scnt" id="scnt">0</span></div>
+          <div class="slabel">Places <span class="scnt" id="scnt">0</span></div>
         </div>
         <div id="spots-list"></div>
       </div>
-      <!-- OFFER -->
+
+      <!-- OFFER PANEL -->
       <div class="panel" id="panel-offer">
-        <div class="p-wrap">
-          <div class="ocard"><div class="oct"><div class="oct-dot"></div>Localisation</div><div class="fg"><label class="fl">Adresse</label><input class="fi" id="oa" placeholder="Ex: 45 Rue Ibn Batouta, Maarif"></div><div class="fg" style="margin-bottom:0"><label class="fl">Quartier</label><select class="fsel" id="oq"><option>Maarif</option><option>Gauthier</option><option>Anfa</option><option>CIL</option><option>Racine</option><option>Bourgogne</option><option>Ain Diab</option><option>Belvédère</option><option>Sidi Maarouf</option></select></div></div>
-          <div class="ocard"><div class="oct"><div class="oct-dot"></div>Disponibilité</div><label class="fl">Jours</label><div class="days" style="margin-bottom:14px"><button class="db on" data-d="L">L</button><button class="db on" data-d="M">M</button><button class="db on" data-d="Me">Me</button><button class="db on" data-d="J">J</button><button class="db on" data-d="V">V</button><button class="db" data-d="S">S</button><button class="db" data-d="D">D</button></div><label class="fl">Horaires</label><div class="trange"><input class="fi" type="time" id="os" value="08:00" oninput="updEarn()"><span class="trsep">→</span><input class="fi" type="time" id="oe" value="19:00" oninput="updEarn()"></div></div>
-          <div class="ocard"><div class="oct"><div class="oct-dot"></div>Équipements</div><div class="agrid"><button class="ab" onclick="this.classList.toggle('on')">🏠 Couvert</button><button class="ab on" onclick="this.classList.toggle('on')">🔒 Sécurisé</button><button class="ab" onclick="this.classList.toggle('on')">💡 Éclairé</button><button class="ab" onclick="this.classList.toggle('on')">⚡ EV</button></div></div>
-          <div class="ocard"><div class="oct"><div class="oct-dot"></div>Tarif</div><div class="fg" style="margin-bottom:0"><label class="fl">Prix à l'heure (DH)</label><input class="fi" type="number" id="op" value="15" min="5" max="100" oninput="updEarn()"></div></div>
-          <div class="earn"><div class="earn-lbl">💵 Estimation revenus / mois</div><div class="earn-amt" id="earn-amt">2 475 DH</div><div class="earn-sub" id="earn-sub">11h/jour · 15 DH/h · 15 jours</div></div>
-          <button class="btn btn-teal w100" onclick="submitOffer()">Publier ma place 🎉</button>
+        <div class="offer-wrap">
+          <!-- Step 1: Info -->
+          <div id="offer-step-1">
+            <div class="ocard">
+              <div class="oct"><div class="oct-dot"></div>Informations</div>
+              <div class="fg"><label class="fl">Nom de la place</label><input class="fi" id="o-name" placeholder="Ex: Garage Maarif Centre"></div>
+              <div class="fg"><label class="fl">Adresse</label><input class="fi" id="o-addr" placeholder="Ex: 45 Rue Ibn Batouta, Maarif"></div>
+              <div class="fg" style="margin-bottom:0"><label class="fl">Quartier</label>
+                <select class="fsel" id="o-quartier">
+                  <option>Maarif</option><option>Gauthier</option><option>Anfa</option><option>CIL</option><option>Racine</option><option>Bourgogne</option><option>Ain Diab</option><option>Belvédère</option><option>Sidi Maarouf</option>
+                </select>
+              </div>
+            </div>
+            <div class="ocard">
+              <div class="oct"><div class="oct-dot"></div>Disponibilité</div>
+              <label class="fl">Jours</label>
+              <div class="days" style="margin-bottom:12px">
+                <button class="db on" data-d="L">L</button><button class="db on" data-d="M">M</button><button class="db on" data-d="Me">Me</button><button class="db on" data-d="J">J</button><button class="db on" data-d="V">V</button><button class="db" data-d="S">S</button><button class="db" data-d="D">D</button>
+              </div>
+              <label class="fl">Horaires d'ouverture</label>
+              <div class="trange">
+                <input class="fi" type="time" id="o-start" value="08:00">
+                <span class="trsep">→</span>
+                <input class="fi" type="time" id="o-end" value="19:00">
+              </div>
+              <p style="font-size:11px;color:var(--text3);margin-top:8px;font-weight:600">📅 Parkly génère automatiquement des créneaux d'1h dans cet intervalle.</p>
+            </div>
+            <div class="ocard">
+              <div class="oct"><div class="oct-dot"></div>Équipements</div>
+              <div class="agrid">
+                <button class="ab" onclick="this.classList.toggle('on')">🏠 Couvert</button>
+                <button class="ab on" onclick="this.classList.toggle('on')">🔒 Sécurisé</button>
+                <button class="ab" onclick="this.classList.toggle('on')">💡 Éclairé</button>
+                <button class="ab" onclick="this.classList.toggle('on')">⚡ EV</button>
+              </div>
+            </div>
+            <div class="ocard">
+              <div class="oct"><div class="oct-dot"></div>Description / Indication</div>
+              <textarea class="fi" id="o-desc" rows="3" placeholder="Ex: Portail bleu au fond de l'impasse, sonnez si problème..." style="resize:none;line-height:1.5"></textarea>
+            </div>
+            <button class="btn btn-teal w100" onclick="goToMapPin()">📍 Placer sur la carte →</button>
+          </div>
+
+          <!-- Step 2: Map pin confirmation -->
+          <div id="offer-step-2" style="display:none">
+            <div class="pin-instruction">
+              <div class="pin-icon">📍</div>
+              <h3>Placez votre garage sur la carte</h3>
+              <p>Cliquez exactement à l'endroit où se trouve votre garage sur la carte à droite. Vous pouvez zoomer pour plus de précision.</p>
+            </div>
+            <div class="pin-coords" id="pin-coords">📍 Position sélectionnée : <span id="pin-lat">—</span>, <span id="pin-lng">—</span></div>
+            <div id="pin-confirm-btns" style="display:none;flex-direction:column;gap:8px">
+              <button class="btn btn-teal w100" onclick="submitOffer()">✅ Confirmer et publier</button>
+              <button class="btn btn-ghost w100" onclick="resetPin()">🔄 Repositionner</button>
+            </div>
+            <button class="btn btn-ghost w100 mt10" onclick="backToStep1()" style="margin-top:8px">← Retour aux informations</button>
+          </div>
         </div>
       </div>
-      <!-- AI -->
+
+      <!-- AI PANEL -->
       <div class="panel" id="panel-ai">
         <div class="p-wrap">
           <div class="ai-hd"><div class="ai-ic">🤖</div><div><div class="ai-t">Assistant Parkly</div><div class="ai-s">IA · Recommandations temps réel</div></div></div>
-          <div class="aichat" id="aichat"><div class="amsg bot">Salam ! 👋 Je suis votre assistant Parkly. Dites-moi où vous allez, à quelle heure, et je vous trouve la meilleure place disponible !</div></div>
+          <div class="aichat" id="aichat"><div class="amsg bot">Salam ! 👋 Je suis votre assistant Parkly. Dites-moi où vous allez et à quelle heure — je trouve la meilleure place disponible pour vous !</div></div>
           <div class="aisugs" id="aisugs">
-            <span class="aisug" onclick="sendSug(this)">🏷️ Moins chère</span>
-            <span class="aisug" onclick="sendSug(this)">📍 Proche Maarif</span>
-            <span class="aisug" onclick="sendSug(this)">🔒 Couvert & sécurisé</span>
-            <span class="aisug" onclick="sendSug(this)">🔄 Trajet habituel</span>
+            <span class="aisug" onclick="sendSug(this)">📍 Proche Maarif maintenant</span>
+            <span class="aisug" onclick="sendSug(this)">🔒 Couvert et sécurisé</span>
+            <span class="aisug" onclick="sendSug(this)">🔄 Mon trajet habituel</span>
+            <span class="aisug" onclick="sendSug(this)">📅 Demain matin</span>
           </div>
           <div class="airow"><input class="ainput" id="ainput" placeholder="Posez votre question…" onkeydown="if(event.key==='Enter')sendMsg()"><button class="sbtn" onclick="sendMsg()">→</button></div>
         </div>
       </div>
-      <!-- PROFILE -->
+
+      <!-- PROFILE PANEL -->
       <div class="panel" id="panel-profile">
         <div class="p-wrap">
           <div class="phero"><div class="pavbig" id="pav">Y</div><div><div class="pname" id="pname">Younes Bennani</div><div class="pemail" id="pemail">younes@demo.ma</div></div></div>
@@ -641,35 +733,41 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
           <div class="sgrid">
             <div class="stile"><div class="stn" id="stat-r">0</div><div class="stl">Réservations</div></div>
             <div class="stile"><div class="stn" id="stat-h">0h</div><div class="stl">Stationnées</div></div>
-            <div class="stile"><div class="stn" id="stat-e">0</div><div class="stl">DH économisés</div></div>
+            <div class="stile"><div class="stn" id="stat-e">0</div><div class="stl">Créneaux libres</div></div>
           </div>
           <div class="divider"></div>
           <div class="mlist">
             <button class="mi" onclick="notify('i','Notifications 🔔','Alertes de disponibilité activées !')"><div class="mic">🔔</div><span class="mil">Notifications</span><span class="mia">›</span></button>
             <button class="mi" onclick="notify('i','Paiement 💳','CMI & Stripe bientôt disponibles')"><div class="mic">💳</div><span class="mil">Paiement</span><span class="mia">›</span></button>
             <button class="mi" onclick="notify('i','Véhicules 🚗','Gérez vos plaques d\'immatriculation')"><div class="mic">🚗</div><span class="mil">Mes véhicules</span><span class="mia">›</span></button>
-            <button class="mi" onclick="notify('i','Historique 📋','Toutes vos réservations passées')"><div class="mic">📋</div><span class="mil">Historique</span><span class="mia">›</span></button>
+            <button class="mi" onclick="notify('i','Historique 📋','Vos réservations passées')"><div class="mic">📋</div><span class="mil">Historique</span><span class="mia">›</span></button>
             <button class="mi" onclick="notify('i','Device 🔐','Gérez votre boîtier Parkly')"><div class="mic">🔐</div><span class="mil">Mon Device</span><span class="mia">›</span></button>
             <button class="mi" style="color:var(--coral)" onclick="doLogout()"><div class="mic" style="background:var(--coral-l)">🚪</div><span class="mil">Se déconnecter</span></button>
           </div>
         </div>
       </div>
+
     </div>
   </div>
+
   <!-- MAP -->
-  <div class="map-wrap">
+  <div class="map-wrap" id="map-wrap">
     <div id="map"></div>
-    <div class="mtopbar">
+    <div class="pin-mode-bar" id="pin-mode-bar">
+      📍 Cliquez sur la carte pour placer votre garage
+      <button class="pin-cancel" onclick="cancelPinMode()">Annuler</button>
+    </div>
+    <div class="mtopbar" id="mtopbar">
       <button class="mtb on" id="vab" onclick="mapView('all')">🗺️ Toutes les places</button>
       <button class="mtb" id="vnb" onclick="mapView('near')">📍 Près de moi</button>
     </div>
     <div class="mfab">
       <button class="fab" onclick="centerMap()">📍</button>
-      <button class="fab" onclick="refreshMap()">🔄</button>
+      <button class="fab" onclick="refreshSpots()">🔄</button>
     </div>
     <div class="mleg">
       <div class="ldot" style="background:var(--green)"></div>Disponible
-      <div class="ldot" style="background:var(--orange)"></div>Bientôt
+      <div class="ldot" style="background:var(--orange)"></div>Partiel
       <div class="ldot" style="background:var(--coral)"></div>Complet
     </div>
   </div>
@@ -678,33 +776,46 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
 <!-- MODAL SPOT -->
 <div class="mov" id="m-spot">
   <div class="modal">
-    <div class="mhdr"><div><div class="mttl" id="m-nm">Garage</div><div class="msub" id="m-ad">Adresse</div></div><button class="mcls" onclick="cm('m-spot')">×</button></div>
+    <div class="mhdr">
+      <div><div class="mttl" id="m-nm">Garage</div><div class="msub" id="m-ad">Adresse</div></div>
+      <button class="mcls" onclick="cm('m-spot')">×</button>
+    </div>
     <div class="drow">
-      <div class="dc"><label>Prix / heure</label><span id="m-pr">—</span></div>
-      <div class="dc"><label>Distance</label><span id="m-di">—</span></div>
+      <div class="dc"><label>Statut</label><span id="m-st">—</span></div>
       <div class="dc"><label>Type</label><span id="m-ty">—</span></div>
       <div class="dc"><label>Note</label><span id="m-rt">—</span></div>
+      <div class="dc"><label>Ajouté par</label><span id="m-ow">—</span></div>
     </div>
-    <div class="slabel" style="margin-bottom:10px">Créneaux disponibles aujourd'hui</div>
-    <div id="m-slots"></div>
-    <button class="btn btn-teal w100 mt10" onclick="doReserve()">Confirmer la réservation →</button>
+    <div id="m-desc-wrap" style="background:var(--bg2);border-radius:var(--r-sm);padding:10px 13px;margin-bottom:16px;font-size:12px;color:var(--text2);display:none">
+      💬 <span id="m-desc"></span>
+    </div>
+    <div class="plan-limit-box" id="plan-limit-box"></div>
+    <div class="slabel" style="margin-bottom:10px">
+      Sélectionnez votre créneau — <span id="m-date-label" style="color:var(--teal);font-family:var(--fd);font-weight:800"></span>
+    </div>
+    <div style="margin-bottom:12px;display:flex;gap:8px;align-items:center">
+      <label class="fl" style="margin:0">Date :</label>
+      <input class="fi" type="date" id="m-date" style="width:auto;flex:1" onchange="loadSlots()">
+    </div>
+    <div class="slot-grid" id="m-slots"></div>
+    <button class="btn btn-teal w100" id="btn-reserve" onclick="doReserve()">Confirmer la réservation →</button>
   </div>
 </div>
 
 <!-- MODAL SUCCESS -->
 <div class="mov" id="m-ok">
   <div class="modal" style="text-align:center">
-    <div style="font-size:72px;margin-bottom:16px;line-height:1">🎉</div>
-    <div class="mttl" style="font-size:24px;margin-bottom:8px">C'est réservé !</div>
-    <div style="color:var(--text2);font-size:14px;margin-bottom:20px" id="ok-dtl">Votre place est confirmée</div>
-    <div style="background:var(--bg2);border:2px solid var(--border);border-radius:var(--r);padding:18px;text-align:left;margin-bottom:20px" id="ok-card"></div>
+    <div style="font-size:68px;margin-bottom:14px;line-height:1">🎉</div>
+    <div class="mttl" style="font-size:22px;margin-bottom:7px">C'est réservé !</div>
+    <div style="color:var(--text2);font-size:13px;margin-bottom:18px" id="ok-dtl">Votre place est confirmée</div>
+    <div style="background:var(--bg2);border:2px solid var(--border);border-radius:var(--r);padding:16px;text-align:left;margin-bottom:18px" id="ok-card"></div>
     <button class="btn btn-teal w100" onclick="cm('m-ok');notify('i','📱 SMS envoyé','Vos détails ont été envoyés sur votre téléphone')">Super, merci ! 🚗</button>
   </div>
 </div>
 
 <script>
 // ══════════════════════════════
-// SUPABASE CONFIG
+// SUPABASE
 // ══════════════════════════════
 const SUPABASE_URL = 'https://cvsmfcesctohycmiivkj.supabase.co'
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2c21mY2VzY3RvaHljbWlpdmtqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMTIyMjQsImV4cCI6MjA4OTU4ODIyNH0.t5kx7BYOv1mfopYqnoINrFHkZI1hW2xzSvFgxXWNISE'
@@ -714,48 +825,27 @@ const db = createClient(SUPABASE_URL, SUPABASE_KEY)
 // ══════════════════════════════
 // STATE
 // ══════════════════════════════
-let S = { user:null, plan:'pro', spot:null, slot:null, filter:'all', map:null, lmap:null, markers:[], dark:false, profile:null }
-
-const SPOTS = [
-  {id:1,name:"Garage Maarif Centre",address:"12 Rue Oqba Ibn Nafii, Maarif",lat:33.5856,lng:-7.6378,quartier:"Maarif",price:15,rating:4.8,distance:"180m",type:"Couvert 🏠",amenities:["couvert","securise","eclaire"],status:"available",owner:"Hassan E.",slots:[{time:"08:00–10:00",dur:"2h",price:30,ok:true},{time:"10:00–13:00",dur:"3h",price:45,ok:true},{time:"13:00–15:00",dur:"2h",price:30,ok:false},{time:"15:00–19:00",dur:"4h",price:60,ok:true}]},
-  {id:2,name:"Parking Gauthier",address:"5 Rue Léon L'Africain, Gauthier",lat:33.5923,lng:-7.6289,quartier:"Gauthier",price:12,rating:4.6,distance:"420m",type:"Extérieur",amenities:["securise"],status:"soon",owner:"Fatima K.",slots:[{time:"08:00–12:00",dur:"4h",price:48,ok:false},{time:"12:00–14:00",dur:"2h",price:24,ok:true},{time:"14:00–18:00",dur:"4h",price:48,ok:true}]},
-  {id:3,name:"Box Anfa Premium",address:"88 Bd d'Anfa, Anfa",lat:33.5812,lng:-7.6498,quartier:"Anfa",price:20,rating:5.0,distance:"750m",type:"Couvert 🏠",amenities:["couvert","securise","eclaire","ev"],status:"available",owner:"Karim O.",slots:[{time:"07:00–10:00",dur:"3h",price:60,ok:true},{time:"10:00–14:00",dur:"4h",price:80,ok:true},{time:"14:00–20:00",dur:"6h",price:120,ok:true}]},
-  {id:4,name:"Garage CIL",address:"3 Rue Abou Hanifa, CIL",lat:33.5778,lng:-7.6198,quartier:"CIL",price:10,rating:4.3,distance:"1.1 km",type:"Couvert 🏠",amenities:["couvert"],status:"full",owner:"Nadia M.",slots:[{time:"08:00–18:00",dur:"10h",price:100,ok:false}]},
-  {id:5,name:"Place Racine Privée",address:"21 Av. Hassan II, Racine",lat:33.5895,lng:-7.6445,quartier:"Racine",price:18,rating:4.7,distance:"550m",type:"Extérieur",amenities:["securise","eclaire"],status:"available",owner:"Amine S.",slots:[{time:"09:00–13:00",dur:"4h",price:72,ok:true},{time:"14:00–17:00",dur:"3h",price:54,ok:true}]},
-  {id:6,name:"Box Bourgogne",address:"7 Rue El Khayyat, Bourgogne",lat:33.5943,lng:-7.6321,quartier:"Bourgogne",price:13,rating:4.5,distance:"830m",type:"Couvert 🏠",amenities:["couvert","securise"],status:"soon",owner:"Youssef B.",slots:[{time:"10:00–12:00",dur:"2h",price:26,ok:false},{time:"12:00–16:00",dur:"4h",price:52,ok:true}]},
-  {id:7,name:"Garage Ain Diab",address:"15 Corniche, Ain Diab",lat:33.5754,lng:-7.6798,quartier:"Ain Diab",price:25,rating:4.9,distance:"2.1 km",type:"Couvert 🏠",amenities:["couvert","securise","eclaire","ev"],status:"available",owner:"Sara L.",slots:[{time:"08:00–20:00",dur:"12h",price:300,ok:true}]},
-]
+let S = {
+  user: null, profile: null, plan: 'pro',
+  spot: null, slot: null, filter: 'all',
+  map: null, lmap: null, markers: [],
+  dark: false, pinMode: false, pinMarker: null,
+  pinLat: null, pinLng: null,
+  spots: [], reservations: [],
+  reservationCount: 0
+}
 
 // ══════════════════════════════
-// INIT — check session on load
+// INIT
 // ══════════════════════════════
 window.addEventListener('load', async () => {
   initLandingMap()
-
-  // Check if user already logged in
   const { data: { session } } = await db.auth.getSession()
-  if (session) {
-    S.user = session.user
-    await loadProfile()
-    showScreen('app')
-  }
-
-  // Hide loader
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden')
-  }, 800)
-
-  // Listen for auth changes
+  if (session) { S.user = session.user; await loadProfile(); showScreen('app') }
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 700)
   db.auth.onAuthStateChange(async (event, session) => {
-    if (event === 'SIGNED_IN' && session) {
-      S.user = session.user
-      await loadProfile()
-      showScreen('app')
-    } else if (event === 'SIGNED_OUT') {
-      S.user = null
-      S.profile = null
-      showScreen('landing')
-    }
+    if (event === 'SIGNED_IN' && session) { S.user = session.user; await loadProfile(); showScreen('app') }
+    else if (event === 'SIGNED_OUT') { S.user = null; S.profile = null; showScreen('landing') }
   })
 })
 
@@ -764,19 +854,12 @@ window.addEventListener('load', async () => {
 // ══════════════════════════════
 async function loadProfile() {
   const { data } = await db.from('profiles').select('*').eq('id', S.user.id).single()
-  if (data) {
-    S.profile = data
-    updUI()
-  }
+  if (data) { S.profile = data; S.plan = data.plan || 'essentiel' }
+  updUI()
 }
 
 async function createProfile(userId, firstName, lastName, phone, plan) {
-  await db.from('profiles').upsert({
-    id: userId,
-    full_name: `${firstName} ${lastName}`,
-    phone: phone,
-    plan: plan,
-  })
+  await db.from('profiles').upsert({ id: userId, full_name: `${firstName} ${lastName}`, phone, plan })
 }
 
 // ══════════════════════════════
@@ -788,10 +871,7 @@ function toggleTheme() {
   document.querySelectorAll('.theme-toggle').forEach(b => b.textContent = S.dark ? '☀️' : '🌙')
   if (S.map) {
     S.map.eachLayer(l => { if (l._url) S.map.removeLayer(l) })
-    L.tileLayer(S.dark
-      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-      : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-      { attribution:'© OSM © Carto', maxZoom:19 }).addTo(S.map)
+    L.tileLayer(S.dark ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution: '© OSM © Carto', maxZoom: 19 }).addTo(S.map)
   }
 }
 
@@ -806,7 +886,7 @@ function showScreen(id) {
 function showAuth(tab) { showScreen('auth'); switchTab(tab) }
 
 // ══════════════════════════════
-// AUTH — REAL SUPABASE
+// AUTH
 // ══════════════════════════════
 function switchTab(t) {
   document.getElementById('form-login').style.display = t === 'login' ? 'block' : 'none'
@@ -816,93 +896,53 @@ function switchTab(t) {
   document.getElementById('auth-sub').textContent = t === 'login' ? 'Bon retour ! Connectez-vous 👋' : 'Créez votre compte en 30 secondes 🚀'
   hideAuthError()
 }
-
-function showAuthError(msg) {
-  const el = document.getElementById('auth-error')
-  el.textContent = msg
-  el.classList.add('show')
-}
-function hideAuthError() {
-  document.getElementById('auth-error').classList.remove('show')
-}
-
-function selPlan(p) {
-  S.plan = p
-  document.getElementById('pc-basic').classList.toggle('sel', p === 'basic')
-  document.getElementById('pc-pro').classList.toggle('sel', p === 'pro')
-}
+function showAuthError(msg) { const el = document.getElementById('auth-error'); el.textContent = msg; el.classList.add('show') }
+function hideAuthError() { document.getElementById('auth-error').classList.remove('show') }
+function selPlan(p) { S.plan = p; document.getElementById('pc-basic').classList.toggle('sel', p === 'basic'); document.getElementById('pc-pro').classList.toggle('sel', p === 'pro') }
 
 async function doLogin() {
-  const email = document.getElementById('le').value.trim()
-  const password = document.getElementById('lp').value
+  const email = document.getElementById('le').value.trim(), password = document.getElementById('lp').value
   if (!email || !password) { showAuthError('Veuillez remplir tous les champs.'); return }
-
-  const btn = document.getElementById('btn-login')
-  btn.textContent = 'Connexion…'; btn.disabled = true
-
+  const btn = document.getElementById('btn-login'); btn.textContent = 'Connexion…'; btn.disabled = true
   const { error } = await db.auth.signInWithPassword({ email, password })
-
   btn.textContent = 'Se connecter →'; btn.disabled = false
-
-  if (error) {
-    showAuthError('Email ou mot de passe incorrect. Vérifiez vos informations.')
-    return
-  }
-  notify('s', 'Bienvenue sur Parkly ! 🎉', 'Vous êtes connecté.')
+  if (error) { showAuthError('Email ou mot de passe incorrect.'); return }
 }
 
 async function doRegister() {
-  const f = document.getElementById('rf').value.trim()
-  const l = document.getElementById('rl').value.trim()
-  const email = document.getElementById('re').value.trim()
-  const phone = document.getElementById('rph').value.trim()
+  const f = document.getElementById('rf').value.trim(), l = document.getElementById('rl').value.trim()
+  const email = document.getElementById('re').value.trim(), phone = document.getElementById('rph').value.trim()
   const password = document.getElementById('rp').value
   if (!f || !l || !email || !password) { showAuthError('Veuillez remplir tous les champs.'); return }
-  if (password.length < 6) { showAuthError('Le mot de passe doit contenir au moins 6 caractères.'); return }
-
-  const btn = document.getElementById('btn-register')
-  btn.textContent = 'Création…'; btn.disabled = true
-
+  if (password.length < 6) { showAuthError('Mot de passe : minimum 6 caractères.'); return }
+  const btn = document.getElementById('btn-register'); btn.textContent = 'Création…'; btn.disabled = true
   const { data, error } = await db.auth.signUp({ email, password })
-
   btn.textContent = 'Créer mon compte 🚀'; btn.disabled = false
-
-  if (error) {
-    showAuthError(error.message.includes('already') ? 'Cet email est déjà utilisé. Essayez de vous connecter.' : 'Une erreur est survenue. Réessayez.')
-    return
-  }
-
-  if (data.user) {
-    await createProfile(data.user.id, f, l, phone, S.plan)
-  }
-
+  if (error) { showAuthError(error.message.includes('already') ? 'Cet email est déjà utilisé.' : 'Une erreur est survenue.'); return }
+  if (data.user) await createProfile(data.user.id, f, l, phone, S.plan)
   notify('s', 'Compte créé ! 🎉', 'Bienvenue sur Parkly, ' + f + ' !')
 }
 
 async function demoLogin() {
-  // Demo mode - bypass Supabase
   S.user = { id: 'demo', email: 'demo@parkly.ma' }
-  S.profile = { full_name: 'Younes Bennani', plan: 'pro', phone: '+212 600 000 000' }
-  updUI()
-  showScreen('app')
-  notify('s', 'Mode démo activé 🎮', 'Vous naviguez en mode démonstration.')
+  S.profile = { full_name: 'Younes Bennani', plan: 'pro' }
+  S.plan = 'pro'
+  updUI(); showScreen('app')
+  notify('s', 'Mode démo activé 🎮', 'Navigation en mode démonstration.')
 }
 
 async function doLogout() {
-  if (S.user?.id !== 'demo') {
-    await db.auth.signOut()
-  }
-  S.user = null; S.profile = null
-  showScreen('landing')
+  if (S.user?.id !== 'demo') await db.auth.signOut()
+  S.user = null; S.profile = null; showScreen('landing')
   notify('i', 'À bientôt ! 👋', 'Vous avez été déconnecté.')
 }
 
 function updUI() {
   const name = S.profile?.full_name || S.user?.email?.split('@')[0] || 'Utilisateur'
   const plan = S.profile?.plan || 'pro'
+  S.plan = plan
   const ini = name.charAt(0).toUpperCase()
-  const short = name.split(' ').map((w,i) => i===0 ? w : w[0]+'.').join(' ')
-
+  const short = name.split(' ').map((w, i) => i === 0 ? w : w[0] + '.').join(' ')
   document.getElementById('uname').textContent = short
   document.getElementById('uplan').textContent = 'Plan ' + cap(plan)
   document.getElementById('uav').textContent = ini
@@ -913,22 +953,114 @@ function updUI() {
 }
 
 // ══════════════════════════════
-// APP
+// APP INIT
 // ══════════════════════════════
 let inited = false
 function initApp() {
   if (inited) return; inited = true
-  initMap(); renderSpots(SPOTS); updEarn(); initDays(); initBanner()
+  initMap(); loadSpots(); initDays(); initBanner()
+  // Set today's date in modal
+  document.getElementById('m-date').value = todayStr()
+  // Real-time subscription for spots
+  db.channel('spots-changes').on('postgres_changes', { event: '*', schema: 'public', table: 'spots' }, () => loadSpots()).subscribe()
+  // Real-time subscription for reservations
+  db.channel('reservation-changes').on('postgres_changes', { event: '*', schema: 'public', table: 'reservations' }, () => { loadSpots() }).subscribe()
 }
 
+// ══════════════════════════════
+// SPOTS — real Supabase data
+// ══════════════════════════════
+async function loadSpots() {
+  const { data, error } = await db.from('spots').select('*').order('created_at', { ascending: false })
+  if (error) { console.error(error); return }
+
+  // Merge with demo spots if no DB spots
+  if (!data || data.length === 0) {
+    S.spots = DEMO_SPOTS
+  } else {
+    // Add DB spots + demo spots
+    const dbSpots = data.map(s => ({
+      id: 'db-' + s.id,
+      dbId: s.id,
+      name: s.name,
+      address: s.address,
+      quartier: s.quartier,
+      lat: s.lat,
+      lng: s.lng,
+      type: s.type || 'Extérieur',
+      amenities: s.amenities || [],
+      status: 'available',
+      owner: 'Propriétaire vérifié',
+      description: s.description || '',
+      rating: s.rating || 5.0,
+      startTime: s.start_time || '08:00',
+      endTime: s.end_time || '19:00',
+      fromDB: true
+    }))
+    S.spots = [...dbSpots, ...DEMO_SPOTS]
+  }
+
+  // Compute status from reservations
+  await computeSpotStatuses()
+  renderSpots(filterArr(S.spots))
+  refreshMarkers()
+}
+
+async function computeSpotStatuses() {
+  const today = todayStr()
+  const { data: resas } = await db.from('reservations').select('*').eq('date', today).eq('status', 'confirmed')
+  S.reservations = resas || []
+
+  S.spots.forEach(spot => {
+    const spotResas = S.reservations.filter(r => r.spot_id == (spot.dbId || spot.id))
+    const slots = generateSlots(spot.startTime || '08:00', spot.endTime || '19:00')
+    const takenCount = spotResas.length
+    if (takenCount === 0) spot.status = 'available'
+    else if (takenCount >= slots.length) spot.status = 'full'
+    else spot.status = 'partial'
+  })
+}
+
+// Generate 1h slots between start and end
+function generateSlots(startTime, endTime) {
+  const slots = []
+  const [sh, sm] = startTime.split(':').map(Number)
+  const [eh, em] = endTime.split(':').map(Number)
+  let cur = sh * 60 + sm
+  const end = eh * 60 + em
+  while (cur + 60 <= end) {
+    const h1 = Math.floor(cur / 60), m1 = cur % 60
+    const h2 = Math.floor((cur + 60) / 60), m2 = (cur + 60) % 60
+    slots.push(`${String(h1).padStart(2,'0')}:${String(m1).padStart(2,'0')}–${String(h2).padStart(2,'0')}:${String(m2).padStart(2,'0')}`)
+    cur += 60
+  }
+  return slots
+}
+
+// ══════════════════════════════
+// DEMO SPOTS (static fallback)
+// ══════════════════════════════
+const DEMO_SPOTS = [
+  { id:1, name:"Garage Maarif Centre", address:"12 Rue Oqba Ibn Nafii, Maarif", lat:33.5856, lng:-7.6378, quartier:"Maarif", type:"Couvert 🏠", amenities:["couvert","securise","eclaire"], status:"available", owner:"Hassan E.", rating:4.8, description:"Portail bleu, 2ème à droite après l'épicerie.", startTime:"08:00", endTime:"19:00" },
+  { id:2, name:"Parking Gauthier", address:"5 Rue Léon L'Africain, Gauthier", lat:33.5923, lng:-7.6289, quartier:"Gauthier", type:"Extérieur", amenities:["securise"], status:"partial", owner:"Fatima K.", rating:4.6, description:"Entrée sur la gauche, code portail fourni par SMS.", startTime:"08:00", endTime:"18:00" },
+  { id:3, name:"Box Anfa Premium", address:"88 Bd d'Anfa, Anfa", lat:33.5812, lng:-7.6498, quartier:"Anfa", type:"Couvert 🏠", amenities:["couvert","securise","eclaire","ev"], status:"available", owner:"Karim O.", rating:5.0, description:"Immeuble Le Parc, box B12, ascenseur à gauche.", startTime:"07:00", endTime:"20:00" },
+  { id:4, name:"Garage CIL", address:"3 Rue Abou Hanifa, CIL", lat:33.5778, lng:-7.6198, quartier:"CIL", type:"Couvert 🏠", amenities:["couvert"], status:"full", owner:"Nadia M.", rating:4.3, description:"Résidence Al Fath, porte grise en sous-sol.", startTime:"08:00", endTime:"18:00" },
+  { id:5, name:"Place Racine Privée", address:"21 Av. Hassan II, Racine", lat:33.5895, lng:-7.6445, quartier:"Racine", type:"Extérieur", amenities:["securise","eclaire"], status:"available", owner:"Amine S.", rating:4.7, description:"Devant le café Médina, place réservée avec panneau Parkly.", startTime:"09:00", endTime:"17:00" },
+  { id:6, name:"Box Bourgogne", address:"7 Rue El Khayyat, Bourgogne", lat:33.5943, lng:-7.6321, quartier:"Bourgogne", type:"Couvert 🏠", amenities:["couvert","securise"], status:"partial", owner:"Youssef B.", rating:4.5, description:"Immeuble Soria, box 3 au RDC, badge fourni à la réservation.", startTime:"10:00", endTime:"16:00" },
+  { id:7, name:"Garage Ain Diab", address:"15 Corniche, Ain Diab", lat:33.5754, lng:-7.6798, quartier:"Ain Diab", type:"Couvert 🏠", amenities:["couvert","securise","eclaire","ev"], status:"available", owner:"Sara L.", rating:4.9, description:"Villa Les Palmiers, sonnez à l'interphone gardien.", startTime:"08:00", endTime:"20:00" },
+]
+
+// ══════════════════════════════
+// MAP
+// ══════════════════════════════
 function initLandingMap() {
   if (S.lmap) return
   const el = document.getElementById('landing-map'); if (!el) return
   S.lmap = L.map('landing-map', { zoomControl:false, scrollWheelZoom:false, dragging:false, keyboard:false }).setView([33.5875,-7.640], 14)
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom:19 }).addTo(S.lmap)
-  SPOTS.forEach(spot => {
-    const c = {available:'#00C2C7',soon:'#FF8C00',full:'#FF5E5B'}[spot.status]
-    L.marker([spot.lat,spot.lng], { icon: L.divIcon({ className:'', html:`<div style="width:14px;height:14px;border-radius:50%;background:${c};border:3px solid white;box-shadow:0 2px 8px ${c}88"></div>`, iconSize:[14,14], iconAnchor:[7,7] }) }).addTo(S.lmap)
+  DEMO_SPOTS.forEach(spot => {
+    const c = { available:'#00C2C7', partial:'#FF8C00', full:'#FF5E5B' }[spot.status] || '#00C2C7'
+    L.marker([spot.lat, spot.lng], { icon: L.divIcon({ className:'', html:`<div style="width:13px;height:13px;border-radius:50%;background:${c};border:3px solid white;box-shadow:0 2px 8px ${c}88"></div>`, iconSize:[13,13], iconAnchor:[6,6] }) }).addTo(S.lmap)
   })
 }
 
@@ -936,138 +1068,339 @@ function initMap() {
   S.map = L.map('map', { zoomControl:false }).setView([33.5875,-7.640], 14)
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution:'© OSM © Carto', maxZoom:19 }).addTo(S.map)
   L.control.zoom({ position:'bottomright' }).addTo(S.map)
-  SPOTS.forEach(addMarker)
+  S.map.on('click', onMapClick)
+}
+
+function onMapClick(e) {
+  if (!S.pinMode) return
+  S.pinLat = e.latlng.lat.toFixed(6)
+  S.pinLng = e.latlng.lng.toFixed(6)
+  if (S.pinMarker) S.map.removeLayer(S.pinMarker)
+  S.pinMarker = L.marker([S.pinLat, S.pinLng], {
+    icon: L.divIcon({ className:'', html:`<div style="font-size:32px;line-height:1;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.3))">📍</div>`, iconSize:[32,32], iconAnchor:[16,32] })
+  }).addTo(S.map)
+  document.getElementById('pin-lat').textContent = parseFloat(S.pinLat).toFixed(4)
+  document.getElementById('pin-lng').textContent = parseFloat(S.pinLng).toFixed(4)
+  document.getElementById('pin-coords').classList.add('show')
+  document.getElementById('pin-confirm-btns').style.display = 'flex'
+}
+
+function refreshMarkers() {
+  S.markers.forEach(({ m }) => S.map && S.map.removeLayer(m))
+  S.markers = []
+  S.spots.forEach(addMarker)
 }
 
 function addMarker(spot) {
-  const c = {available:'#00C2C7',soon:'#FF8C00',full:'#FF5E5B'}[spot.status]
-  const icon = L.divIcon({ className:'', html:`<div style="background:${c};color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;padding:5px 11px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 12px ${c}66;border:2px solid white">${spot.price} DH/h</div>`, iconSize:[75,30], iconAnchor:[0,30], popupAnchor:[37,-34] })
-  const m = L.marker([spot.lat,spot.lng], { icon }).addTo(S.map)
-  m.bindPopup(`<div style="font-family:'Nunito',sans-serif;min-width:190px"><div style="font-weight:900;font-size:15px;margin-bottom:3px;color:#18213A">${spot.name}</div><div style="font-size:12px;color:#5A678A;margin-bottom:10px">📍 ${spot.address}</div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:18px;font-weight:900;color:${c}">${spot.price} DH<small style="font-size:11px;color:#9BA8C4;font-weight:400">/h</small></span><span style="font-size:12px;font-weight:700;color:#5A678A">⭐ ${spot.rating}</span></div><button onclick="openSpot(${spot.id})" style="width:100%;padding:9px;border-radius:999px;background:${c};color:#fff;border:none;cursor:pointer;font-weight:900;font-size:12px;font-family:'Nunito',sans-serif">Voir les créneaux →</button></div>`)
+  if (!S.map) return
+  const colors = { available:'#00C2C7', partial:'#FF8C00', full:'#FF5E5B' }
+  const c = colors[spot.status] || '#00C2C7'
+  const label = spot.status === 'available' ? '✅ Disponible' : spot.status === 'partial' ? '⏳ Partiel' : '🔴 Complet'
+  const icon = L.divIcon({ className:'', html:`<div style="background:${c};color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:11px;padding:5px 10px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px ${c}66;border:2px solid white">${label}</div>`, iconSize:[90,28], iconAnchor:[0,28], popupAnchor:[45,-30] })
+  const m = L.marker([spot.lat, spot.lng], { icon }).addTo(S.map)
+  m.bindPopup(`
+    <div style="font-family:'Nunito',sans-serif;min-width:190px">
+      <div style="font-weight:900;font-size:15px;margin-bottom:3px;color:var(--text,#18213A)">${spot.name}</div>
+      <div style="font-size:12px;color:#5A678A;margin-bottom:8px">📍 ${spot.address}</div>
+      ${spot.description ? `<div style="font-size:11px;color:#9BA8C4;margin-bottom:8px;font-style:italic">💬 ${spot.description}</div>` : ''}
+      <div style="margin-bottom:10px"><span style="font-size:11px;font-weight:800;color:${c};background:${c}22;padding:3px 8px;border-radius:6px">${label}</span></div>
+      <button onclick="openSpot(${JSON.stringify(spot.id)})" style="width:100%;padding:9px;border-radius:999px;background:${c};color:#fff;border:none;cursor:pointer;font-weight:900;font-size:12px;font-family:'Nunito',sans-serif">Voir les créneaux →</button>
+    </div>`)
   m.on('click', () => hlCard(spot.id))
-  S.markers.push({ spot, m })
+  S.markers.push({ id: spot.id, m })
 }
 
-function centerMap() { navigator.geolocation ? navigator.geolocation.getCurrentPosition(p => { S.map.setView([p.coords.latitude,p.coords.longitude],15); notify('s','📍 Position trouvée !','Carte centrée sur vous') }, () => S.map.setView([33.5875,-7.640],14)) : S.map.setView([33.5875,-7.640],14) }
-function refreshMap() { notify('i','🔄 Actualisé !','Données à jour en temps réel'); S.markers.forEach(({m}) => { m.setOpacity(.3); setTimeout(() => m.setOpacity(1), 500) }) }
+function centerMap() { navigator.geolocation ? navigator.geolocation.getCurrentPosition(p => { S.map.setView([p.coords.latitude, p.coords.longitude], 15); notify('s','📍 Position trouvée !','Carte centrée sur vous') }, () => S.map.setView([33.5875,-7.640],14)) : S.map.setView([33.5875,-7.640],14) }
 function mapView(v) { document.getElementById('vab').classList.toggle('on',v==='all'); document.getElementById('vnb').classList.toggle('on',v==='near'); if(v==='near') centerMap(); else S.map.setView([33.5875,-7.640],14) }
+
+// ══════════════════════════════
+// SPOTS LIST
+// ══════════════════════════════
+function filterArr(spots) {
+  const q = (document.getElementById('si')?.value || '').toLowerCase()
+  return spots.filter(s =>
+    (s.name.toLowerCase().includes(q) || (s.quartier||'').toLowerCase().includes(q) || s.address.toLowerCase().includes(q)) &&
+    (S.filter === 'all'
+      || (S.filter === 'disponible' && s.status !== 'full')
+      || (S.filter === 'couvert' && s.amenities.includes('couvert'))
+      || (S.filter === 'securise' && s.amenities.includes('securise'))
+      || (S.filter === 'ev' && s.amenities.includes('ev')))
+  )
+}
 
 function renderSpots(spots) {
   document.getElementById('scnt').textContent = spots.filter(s => s.status !== 'full').length
-  document.getElementById('spots-list').innerHTML = spots.map(s => {
-    const stag = s.status==='available' ? `<span class="st st-g">✅ Disponible</span>` : s.status==='soon' ? `<span class="st st-o">⏳ Bientôt</span>` : `<span class="st st-r">🔴 Complet</span>`
-    const atags = s.amenities.slice(0,2).map(a => ({couvert:'🏠 Couvert',securise:'🔒 Sécurisé',eclaire:'💡 Éclairé',ev:'⚡ EV'})[a]||a).map(a => `<span class="st st-b">${a}</span>`).join('')
-    return `<div class="scard" id="c-${s.id}" onclick="openSpot(${s.id});focusMk(${s.id})"><div class="sc-top"><div class="sc-nm">${s.name}</div><div class="sc-dt">${s.distance}</div></div><div class="sc-ad">📍 ${s.address}</div><div class="stags">${stag}${atags}</div><div class="sc-ft"><div class="sc-pr">${s.price} DH <small>/ heure</small></div><div class="sc-rt">⭐ ${s.rating} · ${s.slots.filter(sl=>sl.ok).length} créneau(x)</div></div></div>`
+  const list = document.getElementById('spots-list')
+  if (!spots.length) { list.innerHTML = `<div class="sc-empty">Aucune place trouvée 🔍<br>Essayez un autre quartier</div>`; return }
+  list.innerHTML = spots.map(s => {
+    const stag = s.status === 'available' ? `<span class="st st-g">✅ Disponible</span>` : s.status === 'partial' ? `<span class="st st-o">⏳ Partiel</span>` : `<span class="st st-r">🔴 Complet</span>`
+    const atags = (s.amenities||[]).slice(0,2).map(a => ({ couvert:'🏠 Couvert', securise:'🔒 Sécurisé', eclaire:'💡 Éclairé', ev:'⚡ EV' })[a]||a).map(a => `<span class="st st-b">${a}</span>`).join('')
+    const slots = generateSlots(s.startTime||'08:00', s.endTime||'19:00')
+    return `<div class="scard" id="c-${s.id}" onclick="openSpot('${s.id}');focusMk('${s.id}')">
+      <div class="sc-top"><div class="sc-nm">${s.name}</div><div class="sc-dt">⭐ ${s.rating||5.0}</div></div>
+      <div class="sc-ad">📍 ${s.address}</div>
+      <div class="stags">${stag}${atags}</div>
+      <div class="sc-ft"><div class="sc-slots">${slots.length} créneau(x) / jour</div><div class="sc-rt">${s.type||'Extérieur'}</div></div>
+    </div>`
   }).join('')
 }
 
-function filterSpots() {
-  const q = document.getElementById('si').value.toLowerCase()
-  renderSpots(SPOTS.filter(s => (s.name.toLowerCase().includes(q)||s.quartier.toLowerCase().includes(q)||s.address.toLowerCase().includes(q)) && (S.filter==='all'||(S.filter==='disponible'&&s.status==='available')||(S.filter==='couvert'&&s.amenities.includes('couvert'))||(S.filter==='securise'&&s.amenities.includes('securise'))||(S.filter==='ev'&&s.amenities.includes('ev')))))
-}
+function filterSpots() { renderSpots(filterArr(S.spots)) }
+function toggleChip(el,f) { document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on')); el.classList.add('on'); S.filter=f; filterSpots() }
+function hlCard(id) { document.querySelectorAll('.scard').forEach(c=>c.style.borderLeftColor='transparent'); const c=document.getElementById('c-'+id); if(c){c.style.borderLeftColor='var(--teal)';c.scrollIntoView({behavior:'smooth',block:'nearest'});goPanel('search')} }
+function focusMk(id) { const m=S.markers.find(m=>m.id==id); if(m){S.map.setView([S.spots.find(s=>s.id==id)?.lat||33.5875, S.spots.find(s=>s.id==id)?.lng||-7.640],16,{animate:true});m.m.openPopup()} }
+async function refreshSpots() { notify('i','🔄 Actualisation','Données mises à jour…'); await loadSpots() }
 
-function toggleChip(el,f) { document.querySelectorAll('.chip').forEach(c => c.classList.remove('on')); el.classList.add('on'); S.filter=f; filterSpots() }
-function hlCard(id) { document.querySelectorAll('.scard').forEach(c => c.style.borderLeftColor='transparent'); const c=document.getElementById('c-'+id); if(c){c.style.borderLeftColor='var(--teal)';c.scrollIntoView({behavior:'smooth',block:'nearest'});goPanel('search')} }
-function focusMk(id) { const m=S.markers.find(m=>m.spot.id===id); if(m){S.map.setView([m.spot.lat,m.spot.lng],16,{animate:true});m.m.openPopup()} }
-
-function openSpot(id) {
-  const s = SPOTS.find(x => x.id===id); if(!s) return; S.spot=s; S.slot=null
+// ══════════════════════════════
+// SPOT MODAL & SLOTS
+// ══════════════════════════════
+async function openSpot(id) {
+  const s = S.spots.find(x => x.id == id); if(!s) return
+  S.spot = s; S.slot = null
   document.getElementById('m-nm').textContent = s.name
-  document.getElementById('m-ad').textContent = '📍 '+s.address
-  document.getElementById('m-pr').textContent = s.price+' DH/h'
-  document.getElementById('m-di').textContent = s.distance
-  document.getElementById('m-ty').textContent = s.type
-  document.getElementById('m-rt').textContent = '⭐ '+s.rating
-  document.getElementById('m-slots').innerHTML = s.slots.map((sl,i) => `<button class="slotbtn ${sl.ok?'':'un'}" id="sl-${i}" onclick="${sl.ok?`pickSlot(${i})`:''}">`+`<div class="slt">${sl.time}</div><div class="sld">${sl.dur}</div><div class="slp">${sl.ok?sl.price+' DH':'—'}</div></button>`).join('')
+  document.getElementById('m-ad').textContent = '📍 ' + s.address
+  document.getElementById('m-st').textContent = s.status === 'available' ? '✅ Disponible' : s.status === 'partial' ? '⏳ Partiel' : '🔴 Complet'
+  document.getElementById('m-ty').textContent = s.type || 'Extérieur'
+  document.getElementById('m-rt').textContent = '⭐ ' + (s.rating||5.0)
+  document.getElementById('m-ow').textContent = s.owner || 'Parkly'
+  const descWrap = document.getElementById('m-desc-wrap')
+  if (s.description) { document.getElementById('m-desc').textContent = s.description; descWrap.style.display='block' } else descWrap.style.display='none'
+
+  // Set today
+  if (!document.getElementById('m-date').value) document.getElementById('m-date').value = todayStr()
+  updateDateLabel()
+  await loadSlots()
   om('m-spot')
 }
 
-function pickSlot(i) { document.querySelectorAll('.slotbtn').forEach(s => s.classList.remove('sel')); document.getElementById('sl-'+i).classList.add('sel'); S.slot=S.spot.slots[i] }
+function updateDateLabel() {
+  const d = new Date(document.getElementById('m-date').value + 'T12:00:00')
+  const opts = { weekday:'long', day:'numeric', month:'long' }
+  document.getElementById('m-date-label').textContent = d.toLocaleDateString('fr-FR', opts)
+}
+
+async function loadSlots() {
+  if (!S.spot) return
+  const spot = S.spot
+  const selectedDate = document.getElementById('m-date').value
+  updateDateLabel()
+
+  // Plan rules
+  const isPro = S.plan === 'pro'
+  const maxH = isPro ? 12 : 3
+  const maxAdvanceDays = isPro ? 7 : 0
+  const today = todayStr()
+  const daysDiff = Math.round((new Date(selectedDate) - new Date(today)) / 86400000)
+
+  // Check advance booking
+  const limitBox = document.getElementById('plan-limit-box')
+  if (daysDiff > maxAdvanceDays) {
+    limitBox.textContent = `🔒 Votre plan Essentiel permet uniquement de réserver le jour même. Passez au plan Pro pour réserver jusqu'à 7 jours à l'avance.`
+    limitBox.classList.add('show')
+    document.getElementById('m-slots').innerHTML = ''
+    document.getElementById('btn-reserve').disabled = true
+    return
+  }
+  limitBox.classList.remove('show')
+  document.getElementById('btn-reserve').disabled = false
+
+  // Get existing reservations for this spot & date
+  const spotDbId = spot.dbId || spot.id
+  const { data: resas } = await db.from('reservations').select('*').eq('spot_id', spotDbId).eq('date', selectedDate).eq('status', 'confirmed')
+  const takenSlots = (resas || []).map(r => r.start_time?.substring(0,5))
+
+  // Generate slots
+  const allSlots = generateSlots(spot.startTime||'08:00', spot.endTime||'19:00')
+  const grid = document.getElementById('m-slots')
+
+  // Check reservation count for Essentiel
+  const { count } = await db.from('reservations').select('*', {count:'exact'}).eq('user_id', S.user?.id).gte('date', firstDayOfMonth()).lt('date', firstDayNextMonth())
+  S.reservationCount = count || 0
+  const resaLimitReached = !isPro && S.reservationCount >= 15
+
+  if (resaLimitReached) {
+    limitBox.textContent = `⚠️ Vous avez atteint votre limite de 15 réservations ce mois-ci (plan Essentiel). Passez au plan Pro pour des réservations illimitées.`
+    limitBox.classList.add('show')
+  }
+
+  // Build slot grid — group consecutive slots up to maxH
+  grid.innerHTML = allSlots.map((slotStr, i) => {
+    const startHour = parseInt(slotStr.split('–')[0])
+    const isTaken = takenSlots.includes(slotStr.split('–')[0])
+    const isLocked = isTaken
+    const isMaxExceeded = false // single slot = 1h, always within limit
+    const timeLabel = slotStr
+
+    if (isTaken) {
+      return `<div class="slot-btn taken"><div class="slot-time">${timeLabel}</div><div class="slot-status">Complet</div></div>`
+    }
+    return `<div class="slot-btn" onclick="pickSlot('${slotStr}', this)"><div class="slot-time">${timeLabel}</div><div class="slot-status">Libre</div></div>`
+  }).join('')
+}
+
+function pickSlot(slotStr, el) {
+  document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('sel'))
+  el.classList.add('sel')
+  S.slot = slotStr
+}
 
 async function doReserve() {
   if (!S.slot) { notify('e','Attention !','Sélectionnez d\'abord un créneau 👆'); return }
-  const s=S.spot, sl=S.slot; cm('m-spot')
+  const s = S.spot, slot = S.slot
+  const selectedDate = document.getElementById('m-date').value
+  const [startStr, endStr] = slot.split('–')
 
-  // Save to Supabase if real user
+  // Save to Supabase
   if (S.user?.id !== 'demo') {
-    const today = new Date().toISOString().split('T')[0]
-    await db.from('reservations').insert({
+    const spotDbId = s.dbId || s.id
+    const { error } = await db.from('reservations').insert({
       user_id: S.user.id,
-      spot_id: s.id,
-      date: today,
-      start_time: sl.time.split('–')[0]+':00',
-      end_time: sl.time.split('–')[1]+':00',
-      total_price: sl.price,
+      spot_id: spotDbId,
+      date: selectedDate,
+      start_time: startStr + ':00',
+      end_time: endStr + ':00',
+      total_price: 0,
       status: 'confirmed'
     })
-    // Update stats
-    const r = parseInt(document.getElementById('stat-r').textContent) + 1
-    document.getElementById('stat-r').textContent = r
+    if (error) { notify('e','Erreur','Ce créneau vient d\'être réservé. Actualisez.'); await loadSlots(); return }
   }
 
-  document.getElementById('ok-dtl').textContent = `Réservé chez ${s.owner} · ${s.quartier}`
-  document.getElementById('ok-card').innerHTML = `<div style="display:grid;gap:11px;font-family:'Nunito Sans',sans-serif;font-size:13px"><div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">📍 Adresse</span><span style="font-weight:700">${s.address}</span></div><div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">🕐 Créneau</span><span style="font-weight:700">${sl.time}</span></div><div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">⏱️ Durée</span><span style="font-weight:700">${sl.dur}</span></div><div style="height:2px;background:var(--border)"></div><div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">💰 Total</span><span style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--teal)">${sl.price} DH</span></div></div>`
+  cm('m-spot')
+  const r = parseInt(document.getElementById('stat-r').textContent) + 1
+  document.getElementById('stat-r').textContent = r
+  document.getElementById('ok-dtl').textContent = `Réservé · ${s.quartier || s.address}`
+  document.getElementById('ok-card').innerHTML = `
+    <div style="display:grid;gap:10px;font-family:'Nunito Sans',sans-serif;font-size:13px">
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">📍 Adresse</span><span style="font-weight:700">${s.address}</span></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">📅 Date</span><span style="font-weight:700">${new Date(selectedDate+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})}</span></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">🕐 Créneau</span><span style="font-weight:700">${slot}</span></div>
+      ${s.description ? `<div style="height:2px;background:var(--border)"></div><div style="font-size:12px;color:var(--text2)">💬 ${s.description}</div>` : ''}
+      <div style="height:2px;background:var(--border)"></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">✅ Couvert par</span><span style="font-family:'Nunito',sans-serif;font-weight:900;color:var(--teal)">Votre abonnement</span></div>
+    </div>`
   om('m-ok')
+  // Refresh spots to update statuses for everyone
+  await loadSpots()
 }
 
-function initDays() { document.querySelectorAll('.db').forEach(b => b.addEventListener('click', () => { b.classList.toggle('on'); updEarn() })) }
-function updEarn() {
-  const s=document.getElementById('os').value||'08:00', e=document.getElementById('oe').value||'19:00'
-  const pr=parseFloat(document.getElementById('op').value)||15
-  const days=document.querySelectorAll('.db.on').length
-  const[sh,sm]=s.split(':').map(Number),[eh,em]=e.split(':').map(Number)
-  const h=Math.max(0,(eh+em/60)-(sh+sm/60))
-  const mo=Math.round(pr*h*days*4.33)
-  document.getElementById('earn-amt').textContent=mo.toLocaleString('fr-FR')+' DH'
-  document.getElementById('earn-sub').textContent=`${h.toFixed(0)}h/jour · ${pr} DH/h · ${days*4} jours/mois`
+// ══════════════════════════════
+// OFFER — 2-step with map pin
+// ══════════════════════════════
+function initDays() { document.querySelectorAll('.db').forEach(b => b.addEventListener('click', () => b.classList.toggle('on'))) }
+
+function goToMapPin() {
+  const name = document.getElementById('o-name').value.trim()
+  const addr = document.getElementById('o-addr').value.trim()
+  if (!name || !addr) { notify('e','Informations manquantes','Remplissez le nom et l\'adresse 📝'); return }
+  document.getElementById('offer-step-1').style.display = 'none'
+  document.getElementById('offer-step-2').style.display = 'block'
+  enterPinMode()
+}
+
+function enterPinMode() {
+  S.pinMode = true
+  S.pinLat = null; S.pinLng = null
+  document.getElementById('pin-mode-bar').classList.add('show')
+  document.getElementById('mtopbar').style.display = 'none'
+  document.getElementById('map-wrap').classList.add('map-mode-pin')
+  if (S.pinMarker) { S.map.removeLayer(S.pinMarker); S.pinMarker = null }
+  document.getElementById('pin-coords').classList.remove('show')
+  document.getElementById('pin-confirm-btns').style.display = 'none'
+}
+
+function cancelPinMode() {
+  S.pinMode = false
+  document.getElementById('pin-mode-bar').classList.remove('show')
+  document.getElementById('mtopbar').style.display = 'flex'
+  document.getElementById('map-wrap').classList.remove('map-mode-pin')
+  if (S.pinMarker) { S.map.removeLayer(S.pinMarker); S.pinMarker = null }
+}
+
+function resetPin() {
+  if (S.pinMarker) { S.map.removeLayer(S.pinMarker); S.pinMarker = null }
+  S.pinLat = null; S.pinLng = null
+  document.getElementById('pin-coords').classList.remove('show')
+  document.getElementById('pin-confirm-btns').style.display = 'none'
+}
+
+function backToStep1() {
+  cancelPinMode()
+  document.getElementById('offer-step-1').style.display = 'block'
+  document.getElementById('offer-step-2').style.display = 'none'
 }
 
 async function submitOffer() {
-  const addr = document.getElementById('oa').value; if(!addr){notify('e','Adresse manquante !','Dites-nous où se trouve votre place 📍');return}
-  const q = document.getElementById('oq').value
-  const price = parseFloat(document.getElementById('op').value)||15
+  if (!S.pinLat || !S.pinLng) { notify('e','Position manquante','Cliquez d\'abord sur la carte pour placer votre garage 📍'); return }
+  const name = document.getElementById('o-name').value.trim()
+  const addr = document.getElementById('o-addr').value.trim()
+  const quartier = document.getElementById('o-quartier').value
+  const startTime = document.getElementById('o-start').value
+  const endTime = document.getElementById('o-end').value
+  const desc = document.getElementById('o-desc').value.trim()
+  const amenities = [...document.querySelectorAll('.ab.on')].map(b => b.textContent.trim().split(' ')[1]?.toLowerCase()).filter(Boolean)
 
-  // Save to Supabase if real user
   if (S.user?.id !== 'demo') {
-    const { data, error } = await db.from('spots').insert({
+    const { error } = await db.from('spots').insert({
       owner_id: S.user.id,
-      name: `Garage ${q} — Particulier`,
-      address: addr,
-      quartier: q,
-      lat: 33.585 + (Math.random()-.5)*.02,
-      lng: -7.640 + (Math.random()-.5)*.02,
-      price_per_hour: price,
-      type: 'Couvert',
-      amenities: ['couvert'],
-      status: 'available'
-    }).select().single()
-
-    if (error) { notify('e','Erreur','Impossible de publier votre place. Réessayez.'); return }
+      name, address: addr, quartier,
+      lat: parseFloat(S.pinLat), lng: parseFloat(S.pinLng),
+      type: amenities.includes('couvert') ? 'Couvert 🏠' : 'Extérieur',
+      amenities, status: 'available',
+      start_time: startTime, end_time: endTime,
+      description: desc
+    })
+    if (error) { notify('e','Erreur','Impossible de publier. Réessayez.'); console.error(error); return }
+  } else {
+    // Demo mode — add locally
+    const ns = { id: 'demo-' + Date.now(), name, address: addr, quartier, lat: parseFloat(S.pinLat), lng: parseFloat(S.pinLng), type: amenities.includes('couvert')?'Couvert 🏠':'Extérieur', amenities, status:'available', owner:S.profile?.full_name||'Vous', rating:5.0, description:desc, startTime, endTime }
+    S.spots.unshift(ns)
+    addMarker(ns)
+    renderSpots(filterArr(S.spots))
   }
 
-  notify('s','Place publiée ! 🎉','Votre garage est visible sur la carte')
-  const ns={id:99,name:`Votre Garage · ${q}`,address:addr,lat:33.585+(Math.random()-.5)*.02,lng:-7.640+(Math.random()-.5)*.02,price:price,rating:5.0,distance:"0m",type:"Couvert 🏠",amenities:['couvert'],status:'available',owner:S.user?.email||'Vous',slots:[{time:"08:00–19:00",dur:"11h",price:165,ok:true}]}
-  SPOTS.push(ns); addMarker(ns); filterSpots(); goPanel('search')
+  cancelPinMode()
+  document.getElementById('offer-step-1').style.display = 'block'
+  document.getElementById('offer-step-2').style.display = 'none'
+  // Reset form
+  document.getElementById('o-name').value = ''
+  document.getElementById('o-addr').value = ''
+  document.getElementById('o-desc').value = ''
+
+  notify('s','Place publiée ! 🎉','Votre garage est maintenant visible pour tous les utilisateurs.')
+  goPanel('search')
+  await loadSpots()
 }
 
+// ══════════════════════════════
+// AI
+// ══════════════════════════════
 const AIR = {
-  "moins chère":"La moins chère en ce moment c'est le **Parking Gauthier** à 12 DH/h ! 🏷️ Créneau 14h–18h disponible pour 48 DH. Je vous l'ouvre ?",
-  "proche maarif":"Pour Maarif maintenant : **Garage Maarif Centre** à 180m ! ✅ 3 créneaux dispo dès 08h, 15 DH/h, ⭐4.8. C'est le meilleur choix.",
-  "couvert & sécurisé":"Le **Box Anfa Premium** répond parfaitement : couvert + sécurisé + éclairé + recharge EV. ⭐5.0. Créneau de 6h disponible à 120 DH.",
-  "trajet habituel":"D'après vos réservations, vous allez souvent à **Maarif** le matin en semaine 🗺️ Je vous suggère de pré-réserver le Garage Maarif Centre demain !",
-  default:"Je trouve **{n} places disponibles** dans votre zone ! 🔍 Donnez-moi votre destination exacte pour affiner."
+  "proche maarif": "Pour Maarif maintenant : **Garage Maarif Centre** est disponible à 180m ! ⭐4.8, couvert et sécurisé. Plusieurs créneaux libres aujourd'hui dès 08h.",
+  "couvert et sécurisé": "Le **Box Anfa Premium** répond parfaitement : couvert + sécurisé + éclairé + recharge EV. ⭐5.0. Disponible de 07h à 20h.",
+  "trajet habituel": "D'après vos réservations, vous allez souvent à **Maarif** le matin en semaine. Je vous suggère de pré-réserver le Garage Maarif Centre pour demain — plusieurs créneaux disponibles !",
+  "demain matin": "Pour demain matin, le **Box Anfa Premium** et la **Place Racine Privée** sont les meilleures options. Si vous avez le plan Pro, vous pouvez réserver dès maintenant jusqu'à 7 jours à l'avance !",
+  default: "Je trouve **{n} places disponibles** dans votre zone ! 🔍 Donnez-moi votre destination exacte pour affiner."
 }
-function sendSug(el){const t=el.textContent.replace(/^[^ ]+ /,'').toLowerCase();addAiMsg(el.textContent,'user');el.remove();setTimeout(()=>{const k=Object.keys(AIR).find(key=>key!=='default'&&t.includes(key));addAiMsg(k?AIR[k]:AIR.default.replace('{n}',SPOTS.filter(s=>s.status==='available').length),'bot');},750)}
-function sendMsg(){const inp=document.getElementById('ainput');const t=inp.value.trim();if(!t)return;inp.value='';addAiMsg(t,'user');const ty=addAiMsg('⏳ Je cherche…','bot');setTimeout(()=>{ty.remove();const l=t.toLowerCase();let r=AIR.default.replace('{n}',SPOTS.filter(s=>s.status==='available').length);if(l.includes('moins')||l.includes('cher'))r=AIR["moins chère"];else if(l.includes('maarif')||l.includes('proche'))r=AIR["proche maarif"];else if(l.includes('sécu')||l.includes('couv')||l.includes('ev'))r=AIR["couvert & sécurisé"];else if(l.includes('trajet')||l.includes('habitu'))r=AIR["trajet habituel"];addAiMsg(r,'bot');},900)}
-function addAiMsg(t,type){const c=document.getElementById('aichat');const d=document.createElement('div');d.className='amsg '+type;d.innerHTML=t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');c.appendChild(d);c.scrollTop=c.scrollHeight;return d}
+function sendSug(el) { const t=el.textContent.toLowerCase(); addAiMsg(el.textContent,'user'); el.remove(); setTimeout(()=>{ const k=Object.keys(AIR).find(key=>key!=='default'&&t.includes(key)); addAiMsg(k?AIR[k]:AIR.default.replace('{n}',S.spots.filter(s=>s.status!=='full').length),'bot') },700) }
+function sendMsg() { const inp=document.getElementById('ainput'); const t=inp.value.trim(); if(!t) return; inp.value=''; addAiMsg(t,'user'); const ty=addAiMsg('⏳ Je cherche…','bot'); setTimeout(()=>{ ty.remove(); const l=t.toLowerCase(); let r=AIR.default.replace('{n}',S.spots.filter(s=>s.status!=='full').length); if(l.includes('maarif')||l.includes('proche'))r=AIR["proche maarif"]; else if(l.includes('sécu')||l.includes('couv')||l.includes('ev'))r=AIR["couvert et sécurisé"]; else if(l.includes('trajet')||l.includes('habitu'))r=AIR["trajet habituel"]; else if(l.includes('demain'))r=AIR["demain matin"]; addAiMsg(r,'bot') },900) }
+function addAiMsg(t,type) { const c=document.getElementById('aichat'); const d=document.createElement('div'); d.className='amsg '+type; d.innerHTML=t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>'); c.appendChild(d); c.scrollTop=c.scrollHeight; return d }
 
-function initBanner(){const h=new Date().getHours();let m='';if(h>=7&&h<9)m="🚨 Heure de pointe dans 30min ! <strong>3 places</strong> encore libres près de Casa Voyageurs.";else if(h>=9&&h<12)m="📊 Maarif est à <strong>95% complet</strong>. Moins cher dispo : 12 DH/h au Parking Gauthier.";else if(h>=12&&h<14)m="🍽️ Pause déj → <strong>14 nouvelles places</strong> libérées près de Twin Center !";else if(h>=14&&h<18)m="⏰ Pointe du soir à 17h. <strong>Réservez maintenant</strong> pour garantir votre place.";else if(h>=18&&h<21)m="🌅 Soirée Ain Diab ? <strong>Garage Ain Diab</strong> dispo jusqu'à 20h.";else m="🌙 Nuit calme — Plusieurs garages proposent des <strong>tarifs nocturnes réduits</strong>.";document.getElementById('sbt').innerHTML=m}
+// ══════════════════════════════
+// BANNER
+// ══════════════════════════════
+function initBanner() { const h=new Date().getHours(); let m=''; if(h>=7&&h<9)m="🚨 Heure de pointe dans 30min ! Plusieurs places encore libres près de Casa Voyageurs."; else if(h>=9&&h<12)m="📊 Maarif est à <strong>95% complet</strong>. Réservez vite avant que les créneaux partent."; else if(h>=12&&h<14)m="🍽️ Pause déj → Nouvelles places libérées près de Twin Center !"; else if(h>=14&&h<18)m="⏰ Pointe du soir à 17h. <strong>Réservez maintenant</strong> pour garantir votre place."; else if(h>=18&&h<21)m="🌅 Soirée Ain Diab ? <strong>Garage Ain Diab</strong> dispo jusqu'à 20h sur la corniche."; else m="🌙 Nuit calme — Places disponibles avec créneaux flexibles."; document.getElementById('sbt').innerHTML=m }
 
-function goPanel(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+id).classList.add('active');document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));document.getElementById('nav-'+id).classList.add('active')}
-function om(id){document.getElementById(id).classList.add('open')}
-function cm(id){document.getElementById(id).classList.remove('open')}
+// ══════════════════════════════
+// UTILS
+// ══════════════════════════════
+function todayStr() { return new Date().toISOString().split('T')[0] }
+function firstDayOfMonth() { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01` }
+function firstDayNextMonth() { const d=new Date(); d.setMonth(d.getMonth()+1); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01` }
+function goPanel(id) { document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active')); document.getElementById('panel-'+id).classList.add('active'); document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active')); document.getElementById('nav-'+id).classList.add('active') }
+function om(id) { document.getElementById(id).classList.add('open') }
+function cm(id) { document.getElementById(id).classList.remove('open') }
 document.querySelectorAll('.mov').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')}))
-function notify(t,title,desc){const i={s:'✅',e:'❌',i:'💬'}[t];const c=document.getElementById('nc');const n=document.createElement('div');n.className='ntf '+t;n.innerHTML=`<div class="ni2">${i}</div><div><div class="ntl">${title}</div><div class="ntd">${desc}</div></div>`;c.appendChild(n);setTimeout(()=>{n.style.opacity='0';n.style.transform='translateX(16px)';n.style.transition='all .3s';setTimeout(()=>n.remove(),300)},3400)}
+function notify(t,title,desc) { const i={s:'✅',e:'❌',i:'💬'}[t]; const c=document.getElementById('nc'); const n=document.createElement('div'); n.className='ntf '+t; n.innerHTML=`<div class="ni2">${i}</div><div><div class="ntl">${title}</div><div class="ntd">${desc}</div></div>`; c.appendChild(n); setTimeout(()=>{n.style.opacity='0';n.style.transform='translateX(16px)';n.style.transition='all .3s';setTimeout(()=>n.remove(),300)},3400) }
 function cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):''}
 </script>
 </body>
