@@ -1098,14 +1098,21 @@ function addMarker(spot) {
   const label = spot.status === 'available' ? '✅ Disponible' : spot.status === 'partial' ? '⏳ Partiel' : '🔴 Complet'
   const icon = L.divIcon({ className:'', html:`<div style="background:${c};color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:11px;padding:5px 10px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px ${c}66;border:2px solid white">${label}</div>`, iconSize:[90,28], iconAnchor:[0,28], popupAnchor:[45,-30] })
   const m = L.marker([spot.lat, spot.lng], { icon }).addTo(S.map)
+  const popupId = 'pbtn-' + String(spot.id).replace(/[^a-zA-Z0-9]/g, '')
   m.bindPopup(`
     <div style="font-family:'Nunito',sans-serif;min-width:190px">
-      <div style="font-weight:900;font-size:15px;margin-bottom:3px;color:var(--text,#18213A)">${spot.name}</div>
+      <div style="font-weight:900;font-size:15px;margin-bottom:3px;color:#18213A">${spot.name}</div>
       <div style="font-size:12px;color:#5A678A;margin-bottom:8px">📍 ${spot.address}</div>
       ${spot.description ? `<div style="font-size:11px;color:#9BA8C4;margin-bottom:8px;font-style:italic">💬 ${spot.description}</div>` : ''}
       <div style="margin-bottom:10px"><span style="font-size:11px;font-weight:800;color:${c};background:${c}22;padding:3px 8px;border-radius:6px">${label}</span></div>
-      <button onclick="openSpot(${JSON.stringify(spot.id)})" style="width:100%;padding:9px;border-radius:999px;background:${c};color:#fff;border:none;cursor:pointer;font-weight:900;font-size:12px;font-family:'Nunito',sans-serif">Voir les créneaux →</button>
+      <button id="${popupId}" style="width:100%;padding:9px;border-radius:999px;background:${c};color:#fff;border:none;cursor:pointer;font-weight:900;font-size:12px;font-family:'Nunito',sans-serif">Voir les créneaux →</button>
     </div>`)
+  m.on('popupopen', () => {
+    setTimeout(() => {
+      const btn = document.getElementById(popupId)
+      if (btn) btn.onclick = () => { S.map.closePopup(); openSpot(spot.id) }
+    }, 50)
+  })
   m.on('click', () => hlCard(spot.id))
   S.markers.push({ id: spot.id, m })
 }
