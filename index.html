@@ -1344,6 +1344,8 @@ async function submitOffer() {
       owner_id: S.user.id,
       name, address: addr, quartier,
       lat: parseFloat(S.pinLat), lng: parseFloat(S.pinLng),
+      price_per_hour: 0,
+      rating: 5.0,
       type: amenities.includes('couvert') ? 'Couvert 🏠' : 'Extérieur',
       amenities, status: 'available',
       start_time: startTime, end_time: endTime,
