@@ -839,10 +839,18 @@ let S = {
 // INIT
 // ══════════════════════════════
 window.addEventListener('load', async () => {
-  initLandingMap()
-  const { data: { session } } = await db.auth.getSession()
-  if (session) { S.user = session.user; await loadProfile(); showScreen('app') }
-  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 700)
+  // Hide loader after max 2s no matter what
+  const hideLoader = () => document.getElementById('loader').classList.add('hidden')
+  setTimeout(hideLoader, 2000)
+
+  try {
+    initLandingMap()
+    const { data: { session } } = await db.auth.getSession()
+    if (session) { S.user = session.user; await loadProfile(); showScreen('app') }
+  } catch(e) { console.error('Init error:', e) }
+
+  hideLoader()
+
   db.auth.onAuthStateChange(async (event, session) => {
     if (event === 'SIGNED_IN' && session) { S.user = session.user; await loadProfile(); showScreen('app') }
     else if (event === 'SIGNED_OUT') { S.user = null; S.profile = null; showScreen('landing') }
