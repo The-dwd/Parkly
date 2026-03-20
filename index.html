@@ -728,7 +728,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
       <!-- PROFILE PANEL -->
       <div class="panel" id="panel-profile">
         <div class="p-wrap">
-          <div class="phero"><div class="pavbig" id="pav">Y</div><div><div class="pname" id="pname">Younes Bennani</div><div class="pemail" id="pemail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c55435942495f6c4849414302414d">[email&#160;protected]</a></div></div></div>
+          <div class="phero"><div class="pavbig" id="pav">Y</div><div><div class="pname" id="pname">Younes Bennani</div><div class="pemail" id="pemail">younes@demo.ma</div></div></div>
           <div class="pplan-card"><div><div class="ppn" id="ppn">🌟 Plan Pro</div><div class="ppe">Expire le 19 Avril 2026</div></div><div class="pab">ACTIF ✓</div></div>
           <div class="sgrid">
             <div class="stile"><div class="stn" id="stat-r">0</div><div class="stl">Réservations</div></div>
@@ -813,7 +813,7 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ══════════════════════════════
 // SUPABASE
 // ══════════════════════════════
@@ -839,18 +839,10 @@ let S = {
 // INIT
 // ══════════════════════════════
 window.addEventListener('load', async () => {
-  // Hide loader after max 2s no matter what
-  const hideLoader = () => document.getElementById('loader').classList.add('hidden')
-  setTimeout(hideLoader, 2000)
-
-  try {
-    initLandingMap()
-    const { data: { session } } = await db.auth.getSession()
-    if (session) { S.user = session.user; await loadProfile(); showScreen('app') }
-  } catch(e) { console.error('Init error:', e) }
-
-  hideLoader()
-
+  initLandingMap()
+  const { data: { session } } = await db.auth.getSession()
+  if (session) { S.user = session.user; await loadProfile(); showScreen('app') }
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 700)
   db.auth.onAuthStateChange(async (event, session) => {
     if (event === 'SIGNED_IN' && session) { S.user = session.user; await loadProfile(); showScreen('app') }
     else if (event === 'SIGNED_OUT') { S.user = null; S.profile = null; showScreen('landing') }
@@ -1106,21 +1098,14 @@ function addMarker(spot) {
   const label = spot.status === 'available' ? '✅ Disponible' : spot.status === 'partial' ? '⏳ Partiel' : '🔴 Complet'
   const icon = L.divIcon({ className:'', html:`<div style="background:${c};color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:11px;padding:5px 10px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px ${c}66;border:2px solid white">${label}</div>`, iconSize:[90,28], iconAnchor:[0,28], popupAnchor:[45,-30] })
   const m = L.marker([spot.lat, spot.lng], { icon }).addTo(S.map)
-  const popupId = 'popup-' + String(spot.id).replace(/[^a-zA-Z0-9]/g,'-')
   m.bindPopup(`
     <div style="font-family:'Nunito',sans-serif;min-width:190px">
-      <div style="font-weight:900;font-size:15px;margin-bottom:3px;color:#18213A">${spot.name}</div>
+      <div style="font-weight:900;font-size:15px;margin-bottom:3px;color:var(--text,#18213A)">${spot.name}</div>
       <div style="font-size:12px;color:#5A678A;margin-bottom:8px">📍 ${spot.address}</div>
       ${spot.description ? `<div style="font-size:11px;color:#9BA8C4;margin-bottom:8px;font-style:italic">💬 ${spot.description}</div>` : ''}
       <div style="margin-bottom:10px"><span style="font-size:11px;font-weight:800;color:${c};background:${c}22;padding:3px 8px;border-radius:6px">${label}</span></div>
-      <button id="${popupId}" style="width:100%;padding:9px;border-radius:999px;background:${c};color:#fff;border:none;cursor:pointer;font-weight:900;font-size:12px;font-family:'Nunito',sans-serif">Voir les créneaux →</button>
+      <button onclick="openSpot(${JSON.stringify(spot.id)})" style="width:100%;padding:9px;border-radius:999px;background:${c};color:#fff;border:none;cursor:pointer;font-weight:900;font-size:12px;font-family:'Nunito',sans-serif">Voir les créneaux →</button>
     </div>`)
-  m.on('popupopen', () => {
-    setTimeout(() => {
-      const btn = document.getElementById(popupId)
-      if (btn) btn.onclick = () => { S.map.closePopup(); openSpot(spot.id) }
-    }, 50)
-  })
   m.on('click', () => hlCard(spot.id))
   S.markers.push({ id: spot.id, m })
 }
@@ -1359,14 +1344,12 @@ async function submitOffer() {
       owner_id: S.user.id,
       name, address: addr, quartier,
       lat: parseFloat(S.pinLat), lng: parseFloat(S.pinLng),
-      price_per_hour: 0,
       type: amenities.includes('couvert') ? 'Couvert 🏠' : 'Extérieur',
       amenities, status: 'available',
-      rating: 5.0,
       start_time: startTime, end_time: endTime,
       description: desc
     })
-    if (error) { notify('e', 'Erreur : ' + error.message, 'Vérifiez et réessayez.'); console.error(error); return }
+    if (error) { notify('e','Erreur','Impossible de publier. Réessayez.'); console.error(error); return }
   } else {
     // Demo mode — add locally
     const ns = { id: 'demo-' + Date.now(), name, address: addr, quartier, lat: parseFloat(S.pinLat), lng: parseFloat(S.pinLng), type: amenities.includes('couvert')?'Couvert 🏠':'Extérieur', amenities, status:'available', owner:S.profile?.full_name||'Vous', rating:5.0, description:desc, startTime, endTime }
@@ -1417,4 +1400,8 @@ function goPanel(id) { document.querySelectorAll('.panel').forEach(p=>p.classLis
 function om(id) { document.getElementById(id).classList.add('open') }
 function cm(id) { document.getElementById(id).classList.remove('open') }
 document.querySelectorAll('.mov').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')}))
-function notify(t,title,desc) { const i={s:'✅',e:'❌',i:'💬'}[t]; const c=document.getElementById('nc'); const n=document.createElement('div'); n.className='ntf '+t; n.innerHTML=`<div class="ni2">${i}</div><div><div class="ntl">${title}</div><div class="ntd">${desc}</div></div>`; c.appendChild(n); setTimeou
+function notify(t,title,desc) { const i={s:'✅',e:'❌',i:'💬'}[t]; const c=document.getElementById('nc'); const n=document.createElement('div'); n.className='ntf '+t; n.innerHTML=`<div class="ni2">${i}</div><div><div class="ntl">${title}</div><div class="ntd">${desc}</div></div>`; c.appendChild(n); setTimeout(()=>{n.style.opacity='0';n.style.transform='translateX(16px)';n.style.transition='all .3s';setTimeout(()=>n.remove(),300)},3400) }
+function cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):''}
+</script>
+</body>
+</html>
