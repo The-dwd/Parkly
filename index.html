@@ -1346,8 +1346,10 @@ async function submitOffer() {
   const desc = document.getElementById('o-desc').value.trim()
   const amenities = [...document.querySelectorAll('.ab.on')].map(b => b.textContent.trim().split(' ')[1]?.toLowerCase()).filter(Boolean)
 
+  notify('i','Publication en cours…','Veuillez patienter')
+
   if (S.user?.id !== 'demo') {
-    const { error } = await db.from('spots').insert({
+    const { data, error } = await db.from('spots').insert({
       owner_id: S.user.id,
       name, address: addr, quartier,
       lat: parseFloat(S.pinLat), lng: parseFloat(S.pinLng),
@@ -1357,10 +1359,9 @@ async function submitOffer() {
       amenities, status: 'available',
       start_time: startTime, end_time: endTime,
       description: desc
-    })
-    if (error) { notify('e','Erreur','Impossible de publier. Réessayez.'); console.error(error); return }
+    }).select()
+    if (error) { notify('e','Erreur : ' + error.message, error.details || 'Vérifiez la console'); console.error(error); return }
   } else {
-    // Demo mode — add locally
     const ns = { id: 'demo-' + Date.now(), name, address: addr, quartier, lat: parseFloat(S.pinLat), lng: parseFloat(S.pinLng), type: amenities.includes('couvert')?'Couvert 🏠':'Extérieur', amenities, status:'available', owner:S.profile?.full_name||'Vous', rating:5.0, description:desc, startTime, endTime }
     S.spots.unshift(ns)
     addMarker(ns)
@@ -1370,16 +1371,13 @@ async function submitOffer() {
   cancelPinMode()
   document.getElementById('offer-step-1').style.display = 'block'
   document.getElementById('offer-step-2').style.display = 'none'
-  // Reset form
   document.getElementById('o-name').value = ''
   document.getElementById('o-addr').value = ''
   document.getElementById('o-desc').value = ''
-
   notify('s','Place publiée ! 🎉','Votre garage est maintenant visible pour tous les utilisateurs.')
   goPanel('search')
   await loadSpots()
 }
-
 // ══════════════════════════════
 // AI
 // ══════════════════════════════
